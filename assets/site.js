@@ -152,6 +152,73 @@
     }
   }
 
+  // Repeats children so a CSS loop (translateX -50%) has no gap.
+  function loop(el, nodes) {
+    el.innerHTML = '';
+    for (var n = 0; n < 2; n++) {
+      nodes.forEach(function (make) { el.appendChild(make()); });
+    }
+  }
+
+  function fillTicker(words) {
+    var el = document.getElementById('ticker');
+    if (!el) return;
+    var all = words.concat(words);
+    loop(el, all.map(function (w) {
+      return function () {
+        var s = document.createElement('span'); s.textContent = w; return s;
+      };
+    }));
+  }
+
+  function fillGallery(names) {
+    var el = document.getElementById('gallery-track');
+    if (!el || el.childElementCount) return;
+    loop(el, names.map(function (n) {
+      return function () {
+        var d = document.createElement('div');
+        d.className = 'poster';
+        var img = document.createElement('img');
+        img.src = 'assets/promo/' + n + '.webp';
+        img.alt = ''; img.loading = 'lazy';
+        d.appendChild(img);
+        return d;
+      };
+    }));
+  }
+
+  function fillWave() {
+    var w = document.getElementById('wave');
+    if (!w) return;
+    for (var i = 0; i < 28; i++) w.appendChild(document.createElement('i'));
+  }
+
+  // The top bar turns to glass once the page scrolls.
+  function topbar() {
+    var bar = document.getElementById('topbar');
+    if (!bar) return;
+    function update() { bar.classList.toggle('scrolled', scrollY > 10); }
+    addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+  // The hero poster stack leans toward the pointer.
+  function tilt() {
+    var stack = document.getElementById('stack');
+    if (!stack || reduced || !matchMedia('(pointer: fine)').matches) return;
+    var box = stack.parentElement;
+    box.addEventListener('pointermove', function (e) {
+      var r = box.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5;
+      var y = (e.clientY - r.top) / r.height - .5;
+      stack.style.transform = 'rotateY(' + (x * 14) + 'deg) rotateX(' +
+        (-y * 10) + 'deg)';
+    });
+    box.addEventListener('pointerleave', function () {
+      stack.style.transform = '';
+    });
+  }
+
   function fillPacks(list) {
     var a = document.getElementById('packsA');
     var b = document.getElementById('packsB');
@@ -173,7 +240,8 @@
 
   window.OneSound = {
     // The landing page: text comes from [dict][lang][key].
-    page: function (dict) {
+    page: function (dict, opts) {
+      opts = opts || {};
       var current;
       function apply(lang) {
         current = lang;
@@ -183,10 +251,13 @@
           if (typeof v === 'string') el.textContent = v;
         });
         fillPacks(t.packs);
+        if (t.ticker) fillTicker(t.ticker);
         markButtons(lang);
       }
       wireButtons(function (lang) { apply(lang); remember(lang); });
       apply(initialLang());
+      if (opts.gallery) fillGallery(opts.gallery);
+      fillWave(); topbar(); tilt();
       reveal(); countUp(); spotlight();
       demo(function () { return dict[current].guess; });
     },
@@ -201,7 +272,7 @@
       }
       wireButtons(function (lang) { apply(lang); remember(lang); });
       apply(initialLang());
-      reveal();
+      topbar(); reveal();
     }
   };
 })();
