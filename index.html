@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>OneSound: Live Music Battles</title>
 <meta name="description" content="Hear the song, raise your hand first and name it. OneSound is a live music-guessing game to play with friends.">
-<meta name="theme-color" content="#04070f">
-<meta property="og:title" content="OneSound: Guess the song. Beat your rivals.">
-<meta property="og:description" content="A live music-guessing game. Raise your hand first, name the song, win the room.">
+<meta name="theme-color" content="#060b18">
+<meta property="og:title" content="OneSound: Hear it. Raise your hand. Name it.">
+<meta property="og:description" content="A live music-guessing game. Everyone hears the same clip at once; the first hand up answers.">
 <meta property="og:image" content="https://duckiendev.github.io/onesound/assets/og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -15,24 +15,15 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/promo/guess-2.webp">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/screens/home.webp">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<div class="aurora" aria-hidden="true"></div>
-<div class="gridlines" aria-hidden="true"></div>
 
 <header class="topbar" id="topbar">
   <div class="wrap">
-    <a class="brand" href="./" data-langlink><img src="assets/icon.png" alt="">
-      <span class="name">One<b>Sound</b></span></a>
-    <nav class="links">
-      <a href="#play" data-i18n="navPlay"></a>
-      <a href="#features" data-i18n="navFeatures"></a>
-      <a href="#gallery" data-i18n="navGallery"></a>
-      <a href="#download" data-i18n="navDownload"></a>
-    </nav>
+    <a class="brand" href="./" data-langlink><img src="assets/icon.png" alt=""> OneSound</a>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-lang="en">EN</button>
       <button type="button" data-lang="vi">VI</button>
@@ -42,173 +33,87 @@
 </header>
 
 <main>
-  <!-- ------------------------------------------------------------ hero -->
   <section class="hero">
     <div class="wrap">
-      <div>
-        <span class="eyebrow reveal" data-i18n="eyebrow"></span>
-        <h1 class="reveal d1"><span data-i18n="h1a"></span><br>
-          <span class="shine" data-i18n="h1b"></span></h1>
-        <p class="lead reveal d2" data-i18n="lead"></p>
-        <div class="buttons reveal d3">
-          <a class="store" href="#download">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 3.5v17l9-8.5-9-8.5Z" fill="#22d3ee"/><path d="m13 12 3-2.9L5.2 3l7.8 9Z" fill="#3ea6ff"/><path d="m13 12-7.8 9L16 14.9 13 12Z" fill="#8b5cf6"/><path d="m16 9.1 3.6 2a1 1 0 0 1 0 1.8l-3.6 2L13 12l3-2.9Z" fill="#e8c77a"/></svg>
-            <span><small data-i18n="comingTo"></small><strong>Google Play</strong></span>
-          </a>
-          <a class="store" href="#download">
-            <svg viewBox="0 0 24 24" fill="#fff"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.9C7 7.3 5.4 8.3 4.6 9.8c-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.4 3 2.4 1.2-.1 1.6-.8 3.1-.8s1.8.8 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.2-2.6 1.3-2.7-.1 0-2.6-1-2.8-4ZM14.1 5.7c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4Z"/></svg>
-            <span><small data-i18n="comingTo"></small><strong>App Store</strong></span>
-          </a>
-        </div>
-        <p class="soon reveal d3" data-i18n="soon"></p>
-        <div class="stats reveal d3">
-          <div><strong data-count="2000">0</strong><span data-i18n="statSongs"></span></div>
-          <div><strong data-count="17">0</strong><span data-i18n="statPacks"></span></div>
-          <div><strong>3</strong><span data-i18n="statLangs"></span></div>
+      <div class="copy">
+        <h1><span data-i18n="h1a">Hear it.</span> <span data-i18n="h1b">Raise your hand.</span>
+          <span data-i18n="h1c">Name it.</span></h1>
+        <p class="lead" data-i18n="lead">OneSound is a live music-guessing game. Everyone in the room hears the same clip at the same moment, and the first hand up gets to answer.</p>
+        <div class="stores">
+          <span class="store">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 3.5v17l9-8.5-9-8.5Z" fill="#22d3ee"/><path d="m13 12 3-2.9L5.2 3l7.8 9Z" fill="#3ea6ff"/><path d="m13 12-7.8 9L16 14.9 13 12Z" fill="#8b5cf6"/><path d="m16 9.1 3.6 2a1 1 0 0 1 0 1.8l-3.6 2L13 12l3-2.9Z" fill="#ffc940"/></svg>
+            <span><small data-i18n="soon">Coming soon to</small><strong>Google Play</strong></span>
+          </span>
+          <span class="store alt">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.9C7 7.3 5.4 8.3 4.6 9.8c-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.4 3 2.4 1.2-.1 1.6-.8 3.1-.8s1.8.8 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.2-2.6 1.3-2.7-.1 0-2.6-1-2.8-4ZM14.1 5.7c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4Z"/></svg>
+            <span><small data-i18n="soon">Coming soon to</small><strong>App Store</strong></span>
+          </span>
         </div>
       </div>
 
-      <div class="showcase reveal d2" aria-hidden="true">
-        <div class="spot"></div>
-        <div class="stack" id="stack">
-          <div class="poster p2"><img src="assets/promo/friends-1.webp" alt=""></div>
-          <div class="poster p3"><img src="assets/promo/chat-2.webp" alt=""></div>
-          <div class="poster p1"><img src="assets/promo/guess-2.webp" alt=""></div>
+      <div class="deck" id="deck" tabindex="0" role="group"
+           aria-label="App screens. Use the arrow keys to turn." data-i18n-label="deckLabel">
+        <div class="ring" id="ring">
+          <div class="record" aria-hidden="true"></div>
+          <div class="slot" style="--i:0">
+            <div class="face"><img src="assets/screens/home.webp" alt="Home: play now, solo, create or join a room, daily challenge and trending packs" width="540" height="1200"></div>
+            <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
+          </div>
+          <div class="slot" style="--i:1">
+            <div class="face"><img src="assets/screens/discover.webp" alt="Discover: music packs by region, era, genre and mood" width="540" height="1200" loading="lazy"></div>
+            <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
+          </div>
+          <div class="slot" style="--i:2">
+            <div class="face"><img src="assets/screens/leaderboard.webp" alt="Leaderboard: this week's top players on the podium" width="540" height="1200" loading="lazy"></div>
+            <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
+          </div>
+          <div class="slot" style="--i:3">
+            <div class="face"><img src="assets/screens/player.webp" alt="A player's profile with friends, followers, wins and win streak" width="540" height="1200" loading="lazy"></div>
+            <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
+          </div>
+          <div class="slot" style="--i:4">
+            <div class="face"><img src="assets/screens/welcome.webp" alt="Sign in with Google or play as a guest" width="540" height="1200" loading="lazy"></div>
+            <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
+          </div>
         </div>
-        <div class="float-chip c1"><span class="dot">✋</span>
-          <span><span data-i18n="chip1"></span><small data-i18n="chip1s"></small></span></div>
-        <div class="float-chip c2"><span class="dot">🏆</span>
-          <span><span data-i18n="chip2"></span><small>+150 XP</small></span></div>
+        <p class="hint" data-i18n="hint">Drag to spin</p>
       </div>
     </div>
   </section>
 
-  <!-- ---------------------------------------------------------- ticker -->
-  <div class="ticker" aria-hidden="true"><div class="track" id="ticker"></div></div>
-
-  <!-- ----------------------------------------------------- how it plays -->
   <section class="round" id="play">
     <div class="wrap">
+      <h2 data-i18n="roundTitle">How a round plays</h2>
+      <ol class="steps">
+        <li><h3 data-i18n="s1t">Listen</h3>
+          <p data-i18n="s1p">A 15-second clip starts on every phone in the room at the same moment.</p></li>
+        <li><h3 data-i18n="s2t">Raise your hand</h3>
+          <p data-i18n="s2p">Know it? Tap first to take the turn. Everyone else waits.</p></li>
+        <li><h3 data-i18n="s3t">Name it</h3>
+          <p data-i18n="s3p">You get 10 seconds and 3 tries. Faster answers score more.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="more">
+    <div class="wrap">
       <div>
-        <div class="head reveal">
-          <span class="eyebrow" data-i18n="howEyebrow"></span>
-          <h2 data-i18n="howTitle"></h2>
-          <p data-i18n="howLead"></p>
-        </div>
-        <ol class="steps">
-          <li class="reveal" data-step="0"><h3 data-i18n="s1t"></h3><p data-i18n="s1p"></p></li>
-          <li class="reveal d1" data-step="1"><h3 data-i18n="s2t"></h3><p data-i18n="s2p"></p></li>
-          <li class="reveal d2" data-step="2"><h3 data-i18n="s3t"></h3><p data-i18n="s3p"></p></li>
-          <li class="reveal d3" data-step="3"><h3 data-i18n="s4t"></h3><p data-i18n="s4p"></p></li>
-        </ol>
+        <h2 data-i18n="packsTitle">2,400+ songs in 17 packs</h2>
+        <p data-i18n="packsLead">Official 30-second previews, from today's charts to the songs you grew up with.</p>
+        <p class="packs" data-i18n="packs">K-Pop, V-Pop, US-UK Hits, 2000s, Throwback Ballads, Pop, Rock Legends, Hip Hop, R&amp;B, EDM Bangers, Indie, Anime, Movie Soundtracks, TikTok Viral, Chill, V-Pop Remix, V-Pop Lofi</p>
       </div>
-      <div class="demo reveal from-right" aria-hidden="true">
-        <div class="demo-top"><span class="live"><i></i>LIVE</span>
-          <span data-i18n="demoRound"></span></div>
-        <div class="wave" id="wave"></div>
-        <div class="timer"><i id="timerBar"></i></div>
-        <div class="players"><span>E</span><span id="me">Y</span><span>L</span><span>M</span></div>
-        <div class="guess"><span id="typed"></span><span class="caret"></span></div>
-        <div class="result" id="result"><b data-i18n="correct"></b><span>+150 · 1.8s</span></div>
+      <div>
+        <h2 data-i18n="friendsTitle">Better with friends</h2>
+        <p data-i18n="friendsLead">Create a room, send the code, and talk over voice chat while you play. Up to 8 players per room.</p>
+        <span class="code" aria-label="Example room code">B7N8QC</span>
       </div>
     </div>
   </section>
 
-  <!-- -------------------------------------------------------- features -->
-  <section id="features">
+  <section class="cta">
     <div class="wrap">
-      <div class="head center reveal">
-        <span class="eyebrow" data-i18n="featEyebrow"></span>
-        <h2 data-i18n="featTitle"></h2>
-        <p data-i18n="featLead"></p>
-      </div>
-
-      <div class="feature">
-        <div class="art reveal from-left" style="--glow: rgba(62,166,255,.45)">
-          <div class="poster"><img src="assets/promo/guess-1.webp" alt="" loading="lazy"></div></div>
-        <div class="reveal d1">
-          <div class="num">01</div>
-          <h3 data-i18n="f1t"></h3><p data-i18n="f1p"></p>
-          <ul class="ticks"><li data-i18n="f1a"></li><li data-i18n="f1b"></li><li data-i18n="f1c"></li></ul>
-        </div>
-      </div>
-
-      <div class="feature flip">
-        <div class="art reveal from-right" style="--glow: rgba(139,92,246,.45)">
-          <div class="poster"><img src="assets/promo/friends-2.webp" alt="" loading="lazy"></div></div>
-        <div class="reveal d1">
-          <div class="num">02</div>
-          <h3 data-i18n="f2t"></h3><p data-i18n="f2p"></p>
-          <ul class="ticks"><li data-i18n="f2a"></li><li data-i18n="f2b"></li><li data-i18n="f2c"></li></ul>
-        </div>
-      </div>
-
-      <div class="feature">
-        <div class="art reveal from-left" style="--glow: rgba(232,199,122,.35)">
-          <div class="poster"><img src="assets/promo/know-2.webp" alt="" loading="lazy"></div></div>
-        <div class="reveal d1">
-          <div class="num">03</div>
-          <h3 data-i18n="f3t"></h3><p data-i18n="f3p"></p>
-          <ul class="ticks"><li data-i18n="f3a"></li><li data-i18n="f3b"></li><li data-i18n="f3c"></li></ul>
-        </div>
-      </div>
-
-      <div class="feature flip">
-        <div class="art reveal from-right" style="--glow: rgba(236,72,153,.35)">
-          <div class="poster"><img src="assets/promo/chat-1.webp" alt="" loading="lazy"></div></div>
-        <div class="reveal d1">
-          <div class="num">04</div>
-          <h3 data-i18n="f4t"></h3><p data-i18n="f4p"></p>
-          <ul class="ticks"><li data-i18n="f4a"></li><li data-i18n="f4b"></li><li data-i18n="f4c"></li></ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- --------------------------------------------------------- gallery -->
-  <section id="gallery" style="padding-top:20px">
-    <div class="wrap">
-      <div class="head center reveal">
-        <span class="eyebrow" data-i18n="galEyebrow"></span>
-        <h2 data-i18n="galTitle"></h2>
-      </div>
-    </div>
-    <div class="gallery reveal"><div class="track" id="gallery-track"></div></div>
-  </section>
-
-  <!-- ----------------------------------------------------------- packs -->
-  <section style="padding-top:20px">
-    <div class="wrap">
-      <div class="head center reveal">
-        <span class="eyebrow" data-i18n="packsEyebrow"></span>
-        <h2 data-i18n="packsTitle"></h2>
-        <p data-i18n="packsLead"></p>
-      </div>
-    </div>
-    <div class="chips reveal"><div class="track" id="packsA"></div></div>
-    <div class="chips rev reveal"><div class="track" id="packsB"></div></div>
-  </section>
-
-  <!-- ------------------------------------------------------------- end -->
-  <section id="download" style="padding-top:30px">
-    <div class="wrap">
-      <div class="final reveal">
-        <img src="assets/promo/banner.webp" alt="OneSound" loading="lazy">
-        <div class="veil"></div>
-        <div class="copy">
-          <div>
-            <span class="eyebrow" data-i18n="ctaEyebrow"></span>
-            <h2 style="margin-top:14px" data-i18n="ctaTitle"></h2>
-            <p data-i18n="ctaLead"></p>
-          </div>
-          <div class="buttons">
-            <span class="store"><svg viewBox="0 0 24 24" fill="none"><path d="M4 3.5v17l9-8.5-9-8.5Z" fill="#22d3ee"/><path d="m13 12 3-2.9L5.2 3l7.8 9Z" fill="#3ea6ff"/><path d="m13 12-7.8 9L16 14.9 13 12Z" fill="#8b5cf6"/><path d="m16 9.1 3.6 2a1 1 0 0 1 0 1.8l-3.6 2L13 12l3-2.9Z" fill="#e8c77a"/></svg>
-              <span><small data-i18n="comingTo"></small><strong>Google Play</strong></span></span>
-            <span class="store"><svg viewBox="0 0 24 24" fill="#fff"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.9C7 7.3 5.4 8.3 4.6 9.8c-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.4 3 2.4 1.2-.1 1.6-.8 3.1-.8s1.8.8 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.2-2.6 1.3-2.7-.1 0-2.6-1-2.8-4ZM14.1 5.7c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4Z"/></svg>
-              <span><small data-i18n="comingTo"></small><strong>App Store</strong></span></span>
-          </div>
-        </div>
-      </div>
+      <h2 data-i18n="ctaTitle">Free to play. Coming soon.</h2>
+      <p data-i18n="ctaLead">On Android and iOS, in English, Vietnamese and Korean.</p>
     </div>
   </section>
 </main>
@@ -217,8 +122,8 @@
   <div class="wrap">
     <span>© 2026 OneSound</span>
     <nav>
-      <a href="privacy/" data-langlink data-i18n="privacy"></a>
-      <a href="terms/" data-langlink data-i18n="terms"></a>
+      <a href="privacy/" data-langlink data-i18n="privacy">Privacy Policy</a>
+      <a href="terms/" data-langlink data-i18n="terms">Terms of Use</a>
       <a href="mailto:support@onesound.app">support@onesound.app</a>
     </nav>
   </div>
@@ -228,109 +133,59 @@
 <script>
 OneSound.page({
   en: {
-    navPlay: 'How to play', navFeatures: 'Features', navGallery: 'Gallery', navDownload: 'Download',
-    eyebrow: 'Live music battles', h1a: 'Hear it first.', h1b: 'Win the room.',
-    lead: 'A song plays for everyone at the same moment. Raise your hand first, name it, and climb the leaderboard with your friends.',
-    comingTo: 'Coming soon to', soon: 'Launching soon on Android and iOS.',
-    statSongs: 'songs', statPacks: 'music packs', statLangs: 'languages',
-    chip1: 'You raised first', chip1s: '10 seconds to answer', chip2: 'Correct!',
-    ticker: ['Guess the song', 'Raise your hand', 'Beat your rivals', 'Play with friends', 'Win the room'],
-    howEyebrow: 'One round', howTitle: 'Fast ears win.',
-    howLead: 'Every round is a race decided in seconds.',
-    s1t: 'Listen together', s1p: 'The same clip starts on every phone in the room at the very same moment.',
-    s2t: 'Raise your hand', s2p: 'Know it? Tap first and the turn is yours while everyone else waits.',
-    s3t: 'Name the song', s3p: '10 seconds and 3 tries. The faster you answer, the more you score.',
-    s4t: 'Win the room', s4p: 'Most points after the final round wins, with a crown for every streak.',
-    demoRound: 'Round 3 / 10', correct: 'Correct!',
-    featEyebrow: 'Why OneSound', featTitle: 'Made for music lovers',
-    featLead: 'Everything you need for the perfect music night, in one app.',
-    f1t: 'Guess the song', f1p: 'Listen to the music and test how well you know your favourite songs.',
-    f1a: 'More than 2,000 official song previews', f1b: 'Quick Match puts you in a room in seconds', f1c: 'Faster answers earn bigger scores',
-    f2t: 'Play music with friends', f2p: 'Challenge your friends and find out who really knows music best.',
-    f2a: 'Private rooms with a 6-letter code', f2b: 'Invite friends with a single tap', f2c: 'Pick any pack: K-Pop, V-Pop, EDM and more',
-    f3t: 'How well do you know music?', f3p: 'Recognise songs, test your knowledge and prove you are a true music fan.',
-    f3a: 'Weekly and monthly leaderboards', f3b: 'Levels, XP and a Daily Challenge', f3c: 'Achievements and winner frames for streaks',
-    f4t: 'Play together, chat together', f4p: 'Join a room, talk with friends and enjoy music guessing together.',
-    f4a: 'Live voice chat in every room', f4b: 'Send gifts to the player who nailed it', f4c: 'Follow players and see who is online',
-    galEyebrow: 'Gallery', galTitle: 'A closer look',
-    packsEyebrow: 'Music packs', packsTitle: 'Every sound, every mood',
-    packsLead: 'Play one pack or mix them all.',
-    ctaEyebrow: 'Coming soon', ctaTitle: 'Ready to raise your hand?',
-    ctaLead: 'OneSound is coming to Google Play and the App Store, in English, Vietnamese and Korean.',
-    privacy: 'Privacy Policy', terms: 'Terms of Use',
-    packs: ['K-Pop', 'V-Pop', 'US-UK Hits', '2000s', 'Throwback Ballads', 'Pop', 'Rock Legends', 'Hip Hop', 'R&B', 'EDM Bangers', 'Indie', 'Anime', 'Movie Soundtracks', 'TikTok Viral', 'Chill', 'V-Pop Remix', 'V-Pop Lofi'],
-    guess: 'Full Throttle Arena'
+    h1a: 'Hear it.', h1b: 'Raise your hand.', h1c: 'Name it.',
+    lead: 'OneSound is a live music-guessing game. Everyone in the room hears the same clip at the same moment, and the first hand up gets to answer.',
+    soon: 'Coming soon to', hint: 'Drag to spin',
+    deckLabel: 'App screens. Use the arrow keys to turn.',
+    roundTitle: 'How a round plays',
+    s1t: 'Listen', s1p: 'A 15-second clip starts on every phone in the room at the same moment.',
+    s2t: 'Raise your hand', s2p: 'Know it? Tap first to take the turn. Everyone else waits.',
+    s3t: 'Name it', s3p: 'You get 10 seconds and 3 tries. Faster answers score more.',
+    packsTitle: '2,400+ songs in 17 packs',
+    packsLead: "Official 30-second previews, from today's charts to the songs you grew up with.",
+    packs: 'K-Pop, V-Pop, US-UK Hits, 2000s, Throwback Ballads, Pop, Rock Legends, Hip Hop, R&B, EDM Bangers, Indie, Anime, Movie Soundtracks, TikTok Viral, Chill, V-Pop Remix, V-Pop Lofi',
+    friendsTitle: 'Better with friends',
+    friendsLead: 'Create a room, send the code, and talk over voice chat while you play. Up to 8 players per room.',
+    ctaTitle: 'Free to play. Coming soon.',
+    ctaLead: 'On Android and iOS, in English, Vietnamese and Korean.',
+    privacy: 'Privacy Policy', terms: 'Terms of Use'
   },
   vi: {
-    navPlay: 'Cách chơi', navFeatures: 'Tính năng', navGallery: 'Hình ảnh', navDownload: 'Tải về',
-    eyebrow: 'Đấu nhạc trực tiếp', h1a: 'Nghe là biết.', h1b: 'Thắng cả phòng.',
-    lead: 'Một bài hát vang lên cùng lúc cho tất cả mọi người. Giơ tay trước, gọi đúng tên bài và leo hạng cùng bạn bè.',
-    comingTo: 'Sắp có trên', soon: 'Sắp ra mắt trên Android và iOS.',
-    statSongs: 'bài hát', statPacks: 'gói nhạc', statLangs: 'ngôn ngữ',
-    chip1: 'Bạn giơ tay đầu tiên', chip1s: '10 giây để trả lời', chip2: 'Chính xác!',
-    ticker: ['Đoán tên bài hát', 'Giơ tay thật nhanh', 'Vượt mặt đối thủ', 'Chơi cùng bạn bè', 'Thắng cả phòng'],
-    howEyebrow: 'Một vòng chơi', howTitle: 'Tai nhanh là thắng.',
-    howLead: 'Mỗi vòng là một cuộc đua chỉ tính bằng giây.',
-    s1t: 'Cùng nghe', s1p: 'Cùng một đoạn nhạc phát trên mọi điện thoại trong phòng vào đúng một thời điểm.',
-    s2t: 'Giơ tay', s2p: 'Biết bài này? Bấm trước là bạn giành lượt, những người khác phải chờ.',
-    s3t: 'Gọi tên bài', s3p: '10 giây và 3 lần đoán. Trả lời càng nhanh, điểm càng cao.',
-    s4t: 'Thắng cả phòng', s4p: 'Nhiều điểm nhất sau vòng cuối sẽ thắng, kèm vương miện cho mỗi chuỗi thắng.',
-    demoRound: 'Vòng 3 / 10', correct: 'Chính xác!',
-    featEyebrow: 'Vì sao chọn OneSound', featTitle: 'Dành cho người yêu nhạc',
-    featLead: 'Mọi thứ cho một đêm âm nhạc trọn vẹn, gói gọn trong một ứng dụng.',
-    f1t: 'Đoán tên bài hát', f1p: 'Nghe nhạc và thử xem bạn thuộc những bài hát yêu thích đến đâu.',
-    f1a: 'Hơn 2.000 đoạn nghe thử chính thức', f1b: 'Ghép trận nhanh, vào phòng trong vài giây', f1c: 'Trả lời càng nhanh, điểm càng cao',
-    f2t: 'Chơi nhạc cùng bạn bè', f2p: 'Thách đấu bạn bè và xem ai mới thật sự sành nhạc.',
-    f2a: 'Phòng riêng với mã 6 ký tự', f2b: 'Mời bạn bè chỉ với một chạm', f2c: 'Chọn gói tuỳ thích: K-Pop, V-Pop, EDM…',
-    f3t: 'Bạn hiểu âm nhạc đến đâu?', f3p: 'Nhận ra bài hát, thử thách kiến thức và chứng minh bạn là fan nhạc thực thụ.',
-    f3a: 'Bảng xếp hạng tuần và tháng', f3b: 'Cấp độ, XP và Thử thách hằng ngày', f3c: 'Thành tích và khung đặc biệt cho chuỗi thắng',
-    f4t: 'Cùng chơi, cùng trò chuyện', f4p: 'Vào phòng, nói chuyện với bạn bè và cùng nhau đoán nhạc.',
-    f4a: 'Trò chuyện thoại trực tiếp trong mọi phòng', f4b: 'Tặng quà cho người vừa đoán trúng', f4c: 'Theo dõi người chơi và xem ai đang online',
-    galEyebrow: 'Hình ảnh', galTitle: 'Nhìn gần hơn',
-    packsEyebrow: 'Gói nhạc', packsTitle: 'Đủ mọi gu, đủ mọi cảm xúc',
-    packsLead: 'Chơi một gói hoặc trộn tất cả.',
-    ctaEyebrow: 'Sắp ra mắt', ctaTitle: 'Sẵn sàng giơ tay chưa?',
-    ctaLead: 'OneSound sắp có mặt trên Google Play và App Store, với tiếng Việt, tiếng Anh và tiếng Hàn.',
-    privacy: 'Chính sách quyền riêng tư', terms: 'Điều khoản sử dụng',
-    packs: ['K-Pop', 'V-Pop', 'Hit Âu Mỹ', 'Thập niên 2000', 'Ballad bất hủ', 'Pop', 'Rock huyền thoại', 'Hip Hop', 'R&B', 'EDM sôi động', 'Indie', 'Anime', 'Nhạc phim', 'TikTok Viral', 'Chill', 'V-Pop Remix', 'V-Pop Lofi'],
-    guess: 'Full Throttle Arena'
+    h1a: 'Nghe.', h1b: 'Giơ tay.', h1c: 'Gọi tên bài.',
+    lead: 'OneSound là game đoán nhạc trực tiếp. Cả phòng nghe cùng một đoạn nhạc vào cùng một lúc, ai giơ tay trước thì được trả lời.',
+    soon: 'Sắp có trên', hint: 'Kéo để xoay',
+    deckLabel: 'Màn hình app. Dùng phím mũi tên để xoay.',
+    roundTitle: 'Một vòng chơi',
+    s1t: 'Nghe', s1p: 'Một đoạn nhạc 15 giây phát trên mọi điện thoại trong phòng vào cùng một lúc.',
+    s2t: 'Giơ tay', s2p: 'Biết bài? Bấm trước để giành lượt, những người khác phải chờ.',
+    s3t: 'Gọi tên bài', s3p: 'Bạn có 10 giây và 3 lần thử. Trả lời càng nhanh, điểm càng cao.',
+    packsTitle: 'Hơn 2.400 bài trong 17 gói nhạc',
+    packsLead: 'Đoạn nghe thử 30 giây chính thức, từ bảng xếp hạng hôm nay đến những bài bạn nghe từ bé.',
+    packs: 'K-Pop, V-Pop, Hit Âu Mỹ, Thập niên 2000, Ballad hoài niệm, Pop, Huyền thoại Rock, Hip Hop, R&B, EDM bùng nổ, Indie, Anime, Nhạc phim, TikTok Viral, Chill, V-Pop Remix, V-Pop Lofi',
+    friendsTitle: 'Vui hơn khi có bạn bè',
+    friendsLead: 'Tạo phòng, gửi mã cho bạn và trò chuyện bằng giọng nói trong lúc chơi. Mỗi phòng tối đa 8 người.',
+    ctaTitle: 'Miễn phí. Sắp ra mắt.',
+    ctaLead: 'Trên Android và iOS, có tiếng Việt, tiếng Anh và tiếng Hàn.',
+    privacy: 'Chính sách quyền riêng tư', terms: 'Điều khoản sử dụng'
   },
   ko: {
-    navPlay: '게임 방법', navFeatures: '기능', navGallery: '갤러리', navDownload: '다운로드',
-    eyebrow: '실시간 음악 대결', h1a: '먼저 듣고,', h1b: '방을 이기세요.',
-    lead: '모두에게 같은 순간에 노래가 흘러나와요. 가장 먼저 손을 들어 제목을 맞히고 친구들과 랭킹을 올려 보세요.',
-    comingTo: '곧 출시', soon: 'Android와 iOS에 곧 출시돼요.',
-    statSongs: '곡', statPacks: '음악 팩', statLangs: '개 언어',
-    chip1: '가장 먼저 손을 들었어요', chip1s: '답할 시간 10초', chip2: '정답!',
-    ticker: ['노래 맞히기', '손 들기', '라이벌 이기기', '친구와 함께', '방 우승'],
-    howEyebrow: '한 라운드', howTitle: '빠른 귀가 이겨요.',
-    howLead: '모든 라운드는 몇 초 만에 승부가 나는 경주예요.',
-    s1t: '함께 듣기', s1p: '방 안의 모든 휴대폰에서 같은 순간에 같은 클립이 시작돼요.',
-    s2t: '손 들기', s2p: '아는 노래라면 가장 먼저 눌러 차례를 잡으세요. 다른 사람은 기다려요.',
-    s3t: '제목 맞히기', s3p: '10초 동안 3번의 기회. 빨리 맞힐수록 점수가 높아요.',
-    s4t: '방 우승', s4p: '마지막 라운드 후 최고 점수가 우승, 연승마다 왕관이 따라와요.',
-    demoRound: '3 / 10 라운드', correct: '정답!',
-    featEyebrow: 'OneSound를 고르는 이유', featTitle: '음악을 사랑하는 당신을 위해',
-    featLead: '완벽한 음악의 밤에 필요한 모든 것, 하나의 앱에.',
-    f1t: '노래 맞히기', f1p: '음악을 듣고 좋아하는 노래를 얼마나 잘 아는지 확인해 보세요.',
-    f1a: '2,000곡 이상의 공식 미리듣기', f1b: '빠른 매칭으로 몇 초 만에 입장', f1c: '빨리 맞힐수록 더 높은 점수',
-    f2t: '친구와 함께 음악 게임', f2p: '친구에게 도전하고 누가 진짜 음악 고수인지 가려 보세요.',
-    f2a: '6자리 코드로 만드는 비공개 방', f2b: '탭 한 번으로 친구 초대', f2c: '원하는 팩 선택: K-Pop, V-Pop, EDM 등',
-    f3t: '음악, 얼마나 알고 있나요?', f3p: '노래를 알아맞히고 실력을 시험해 진정한 음악 팬임을 증명해요.',
-    f3a: '주간·월간 랭킹', f3b: '레벨, XP, 데일리 챌린지', f3c: '업적과 연승 우승 프레임',
-    f4t: '함께 플레이, 함께 대화', f4p: '방에 들어가 친구와 이야기하며 함께 음악을 맞혀요.',
-    f4a: '모든 방에서 실시간 음성 채팅', f4b: '정답을 맞힌 플레이어에게 선물 보내기', f4c: '플레이어를 팔로우하고 접속 중인 친구 확인',
-    galEyebrow: '갤러리', galTitle: '더 가까이',
-    packsEyebrow: '음악 팩', packsTitle: '모든 사운드, 모든 분위기',
-    packsLead: '한 팩만 하거나 전부 섞어서 플레이해요.',
-    ctaEyebrow: '곧 출시', ctaTitle: '손 들 준비 됐나요?',
-    ctaLead: 'OneSound가 곧 Google Play와 App Store에 출시돼요. 한국어, 영어, 베트남어를 지원해요.',
-    privacy: '개인정보 처리방침', terms: '이용약관',
-    packs: ['K-Pop', 'V-Pop', '미국·영국 히트곡', '2000년대', '추억의 발라드', '팝', '록 레전드', '힙합', 'R&B', 'EDM', '인디', '애니메이션', '영화 OST', '틱톡 바이럴', '칠', 'V-Pop 리믹스', 'V-Pop 로파이'],
-    guess: 'Full Throttle Arena'
+    h1a: '듣고,', h1b: '손 들고,', h1c: '맞혀요.',
+    lead: 'OneSound는 실시간 음악 맞히기 게임이에요. 방 안의 모두가 같은 순간에 같은 곡을 듣고, 먼저 손을 든 사람이 답할 수 있어요.',
+    soon: '곧 출시', hint: '드래그해서 돌려 보세요',
+    deckLabel: '앱 화면. 방향키로 돌릴 수 있어요.',
+    roundTitle: '한 라운드는 이렇게 진행돼요',
+    s1t: '듣기', s1p: '15초 클립이 방 안 모든 휴대폰에서 동시에 재생돼요.',
+    s2t: '손 들기', s2p: '아는 곡이면 먼저 눌러 차례를 가져가요. 다른 사람은 기다려요.',
+    s3t: '맞히기', s3p: '10초 안에 세 번까지 답할 수 있어요. 빨리 맞힐수록 점수가 높아요.',
+    packsTitle: '17개 팩, 2,400곡 이상',
+    packsLead: '오늘의 차트부터 어릴 적 듣던 노래까지, 공식 30초 미리듣기로 즐겨요.',
+    packs: 'K-Pop, V-Pop, 미국·영국 히트곡, 2000년대, 추억의 발라드, 팝, 록 레전드, 힙합, R&B, EDM 뱅어, 인디, 애니메이션, 영화 OST, 틱톡 바이럴, 칠, V-Pop 리믹스, V-Pop 로파이',
+    friendsTitle: '친구와 함께하면 더 재밌어요',
+    friendsLead: '방을 만들고 코드를 보내서, 플레이하는 동안 음성으로 대화해요. 한 방에 최대 8명까지 들어올 수 있어요.',
+    ctaTitle: '무료로 즐겨요. 곧 출시돼요.',
+    ctaLead: 'Android와 iOS에서 한국어, 영어, 베트남어로 만나요.',
+    privacy: '개인정보 처리방침', terms: '이용약관'
   }
-}, {
-  gallery: ['guess-1', 'friends-1', 'know-1', 'chat-1', 'guess-2', 'friends-2', 'know-2', 'chat-2']
 });
 </script>
 </body>

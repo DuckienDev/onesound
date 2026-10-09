@@ -1,5 +1,5 @@
-/* OneSound site: language switching, scroll reveals and the live round demo.
-   No dependencies. Everything degrades to static content without JS. */
+/* OneSound site: language switching and the turntable of phones.
+   No dependencies. Without JS the page is static and still complete. */
 (function () {
   var LANGS = ['en', 'vi', 'ko'];
   var reduced = window.matchMedia &&
@@ -42,158 +42,7 @@
     });
   }
 
-  function reveal() {
-    var items = document.querySelectorAll('.reveal');
-    if (reduced || !('IntersectionObserver' in window)) {
-      items.forEach(function (el) { el.classList.add('in'); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.15 });
-    items.forEach(function (el) { io.observe(el); });
-  }
-
-  function countUp() {
-    document.querySelectorAll('[data-count]').forEach(function (el) {
-      var target = +el.dataset.count;
-      var suffix = target >= 1000 ? '+' : '';
-      if (reduced) { el.textContent = target.toLocaleString() + suffix; return; }
-      var start = null;
-      function step(t) {
-        if (!start) start = t;
-        var p = Math.min(1, (t - start) / 1600);
-        var eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(target * eased).toLocaleString() +
-          (p === 1 ? suffix : '');
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    });
-  }
-
-  // Cards light up where the pointer is.
-  function spotlight() {
-    document.querySelectorAll('.card').forEach(function (card) {
-      card.addEventListener('pointermove', function (e) {
-        var r = card.getBoundingClientRect();
-        card.style.setProperty('--x', (e.clientX - r.left) + 'px');
-        card.style.setProperty('--y', (e.clientY - r.top) + 'px');
-      });
-    });
-  }
-
-  // A round on loop: countdown, a hand goes up, the title is typed, "Correct!"
-  function demo(getGuess) {
-    var bar = document.getElementById('timerBar');
-    var typed = document.getElementById('typed');
-    var me = document.getElementById('me');
-    var result = document.getElementById('result');
-    var steps = document.querySelectorAll('.steps li');
-    if (!bar) return;
-
-    function mark(i) {
-      steps.forEach(function (s) { s.classList.toggle('on', +s.dataset.step === i); });
-    }
-    if (reduced) {
-      bar.style.transform = 'scaleX(.6)';
-      me.classList.add('hand');
-      typed.textContent = getGuess();
-      return;
-    }
-
-    var timers = [];
-    function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
-
-    function run() {
-      timers.forEach(clearTimeout); timers = [];
-      result.classList.remove('show');
-      me.classList.remove('hand');
-      typed.textContent = '';
-      bar.style.transition = 'none';
-      bar.style.transform = 'scaleX(1)';
-      mark(0);
-      // The clip plays: the timer runs down.
-      later(60, function () {
-        bar.style.transition = 'transform 7s linear';
-        bar.style.transform = 'scaleX(0)';
-      });
-      later(1800, function () { mark(1); me.classList.add('hand'); });
-      later(2600, function () {
-        mark(2);
-        var text = getGuess(), i = 0;
-        (function type() {
-          typed.textContent = text.slice(0, ++i);
-          if (i < text.length) later(70 + Math.random() * 70, type);
-        })();
-      });
-      later(4600, function () {
-        mark(3);
-        bar.style.transition = 'transform .3s';
-        result.classList.add('show');
-      });
-      later(7400, run);
-    }
-
-    // Only animate while visible.
-    if ('IntersectionObserver' in window) {
-      var running = false;
-      new IntersectionObserver(function (entries) {
-        var visible = entries[0].isIntersecting;
-        if (visible && !running) { running = true; run(); }
-        if (!visible && running) {
-          running = false; timers.forEach(clearTimeout); timers = [];
-        }
-      }, { threshold: 0.3 }).observe(document.querySelector('.demo'));
-    } else {
-      run();
-    }
-  }
-
-  // Repeats children so a CSS loop (translateX -50%) has no gap.
-  function loop(el, nodes) {
-    el.innerHTML = '';
-    for (var n = 0; n < 2; n++) {
-      nodes.forEach(function (make) { el.appendChild(make()); });
-    }
-  }
-
-  function fillTicker(words) {
-    var el = document.getElementById('ticker');
-    if (!el) return;
-    var all = words.concat(words);
-    loop(el, all.map(function (w) {
-      return function () {
-        var s = document.createElement('span'); s.textContent = w; return s;
-      };
-    }));
-  }
-
-  function fillGallery(names) {
-    var el = document.getElementById('gallery-track');
-    if (!el || el.childElementCount) return;
-    loop(el, names.map(function (n) {
-      return function () {
-        var d = document.createElement('div');
-        d.className = 'poster';
-        var img = document.createElement('img');
-        img.src = 'assets/promo/' + n + '.webp';
-        img.alt = ''; img.loading = 'lazy';
-        d.appendChild(img);
-        return d;
-      };
-    }));
-  }
-
-  function fillWave() {
-    var w = document.getElementById('wave');
-    if (!w) return;
-    for (var i = 0; i < 28; i++) w.appendChild(document.createElement('i'));
-  }
-
-  // The top bar turns to glass once the page scrolls.
+  // The top bar turns solid once the page scrolls.
   function topbar() {
     var bar = document.getElementById('topbar');
     if (!bar) return;
@@ -202,64 +51,115 @@
     update();
   }
 
-  // The hero poster stack leans toward the pointer.
-  function tilt() {
-    var stack = document.getElementById('stack');
-    if (!stack || reduced || !matchMedia('(pointer: fine)').matches) return;
-    var box = stack.parentElement;
-    box.addEventListener('pointermove', function (e) {
-      var r = box.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - .5;
-      var y = (e.clientY - r.top) / r.height - .5;
-      stack.style.transform = 'rotateY(' + (x * 14) + 'deg) rotateX(' +
-        (-y * 10) + 'deg)';
-    });
-    box.addEventListener('pointerleave', function () {
-      stack.style.transform = '';
-    });
-  }
+  // The ring of phones turns slowly like a record, can be dragged or turned
+  // with the arrow keys, and drifts to rest after a flick. On load it swings
+  // in once; with reduced motion it only moves when asked to.
+  function turntable() {
+    var deck = document.getElementById('deck');
+    var ring = document.getElementById('ring');
+    if (!deck || !ring) return;
 
-  function fillPacks(list) {
-    var a = document.getElementById('packsA');
-    var b = document.getElementById('packsB');
-    if (!a) return;
-    var half = Math.ceil(list.length / 2);
-    function fill(el, items) {
-      // Twice over, so the strip loops without a gap.
-      el.innerHTML = '';
-      items.concat(items, items).forEach(function (name) {
-        var s = document.createElement('span');
-        s.className = 'chip';
-        s.textContent = name;
-        el.appendChild(s);
-      });
+    var STEP = 72;            // degrees between phones
+    var CRUISE = -6;          // degrees per second while idle
+    var angle = reduced ? 0 : 150;
+    var velocity = 0;         // degrees per second, from drags
+    var target = reduced ? 0 : null;   // swing-in, then keyboard snaps
+    var dragging = false, lastX = 0, lastT = 0, idleAt = 0;
+    var visible = true, last = performance.now();
+
+    function draw() { ring.style.setProperty('--a', angle.toFixed(2) + 'deg'); }
+
+    function frame(now) {
+      var dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      if (!dragging) {
+        if (target !== null) {
+          // Ease toward a resting angle (the swing-in, or an arrow key).
+          angle += (target - angle) * Math.min(1, dt * 4);
+          if (Math.abs(target - angle) < 0.05) {
+            angle = target;
+            target = null;
+            idleAt = now;
+          }
+        } else if (Math.abs(velocity) > 1) {
+          angle += velocity * dt;
+          velocity *= Math.pow(0.12, dt);   // a flick dies out in ~1.5 s
+          idleAt = now;
+        } else if (!reduced && now - idleAt > 1500) {
+          angle += CRUISE * dt;
+        }
+      }
+      draw();
+      if (visible) requestAnimationFrame(frame);
     }
-    fill(a, list.slice(0, half));
-    fill(b, list.slice(half));
+
+    function start() { last = performance.now(); requestAnimationFrame(frame); }
+
+    deck.addEventListener('pointerdown', function (e) {
+      dragging = true; target = null; velocity = 0;
+      lastX = e.clientX; lastT = performance.now();
+      deck.classList.add('dragging');
+      deck.setPointerCapture(e.pointerId);
+    });
+    deck.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var now = performance.now();
+      var delta = (e.clientX - lastX) * 0.35;
+      angle += delta;
+      velocity = delta / Math.max(0.016, (now - lastT) / 1000);
+      lastX = e.clientX; lastT = now;
+    });
+    function release() {
+      if (!dragging) return;
+      dragging = false;
+      deck.classList.remove('dragging');
+      if (performance.now() - lastT > 80) velocity = 0;
+      idleAt = performance.now();
+    }
+    deck.addEventListener('pointerup', release);
+    deck.addEventListener('pointercancel', release);
+
+    deck.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      e.preventDefault();
+      var base = Math.round(angle / STEP) * STEP;
+      target = base + (e.key === 'ArrowLeft' ? STEP : -STEP);
+      velocity = 0;
+    });
+
+    // Only spin while on screen.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        var now = entries[0].isIntersecting;
+        if (now && !visible) { visible = true; start(); }
+        visible = now;
+      }).observe(deck);
+    }
+
+    if (!reduced) target = 0;
+    draw();
+    start();
   }
 
   window.OneSound = {
     // The landing page: text comes from [dict][lang][key].
-    page: function (dict, opts) {
-      opts = opts || {};
-      var current;
+    page: function (dict) {
       function apply(lang) {
-        current = lang;
         var t = dict[lang];
         document.querySelectorAll('[data-i18n]').forEach(function (el) {
           var v = t[el.dataset.i18n];
           if (typeof v === 'string') el.textContent = v;
         });
-        fillPacks(t.packs);
-        if (t.ticker) fillTicker(t.ticker);
+        document.querySelectorAll('[data-i18n-label]').forEach(function (el) {
+          var v = t[el.dataset.i18nLabel];
+          if (typeof v === 'string') el.setAttribute('aria-label', v);
+        });
         markButtons(lang);
       }
       wireButtons(function (lang) { apply(lang); remember(lang); });
       apply(initialLang());
-      if (opts.gallery) fillGallery(opts.gallery);
-      fillWave(); topbar(); tilt();
-      reveal(); countUp(); spotlight();
-      demo(function () { return dict[current].guess; });
+      topbar();
+      turntable();
     },
 
     // The legal pages: one <article data-lang> per language.
@@ -272,7 +172,7 @@
       }
       wireButtons(function (lang) { apply(lang); remember(lang); });
       apply(initialLang());
-      topbar(); reveal();
+      topbar();
     }
   };
 })();
