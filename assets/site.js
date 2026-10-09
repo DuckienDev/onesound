@@ -141,6 +141,160 @@
     start();
   }
 
+  // Music notes drifting down behind the page, swaying as they fall. Each
+  // glyph is drawn once to a sprite so a frame is only a few drawImage calls.
+  function notes() {
+    if (reduced) return;
+    var c = document.createElement('canvas');
+    c.className = 'notes';
+    c.setAttribute('aria-hidden', 'true');
+    document.body.prepend(c);
+    var ctx = c.getContext('2d');
+    var GLYPHS = ['\u266A', '\u266B', '\u2669', '\u266C'];
+    var COLORS = ['#3ea6ff', '#7fd4ff', '#8b5cf6', '#ffc940'];
+    var SPRITE = 64;
+    var sprites = [];
+    GLYPHS.forEach(function (g) {
+      COLORS.forEach(function (col) {
+        var s = document.createElement('canvas');
+        s.width = s.height = SPRITE * 2;
+        var x = s.getContext('2d');
+        x.font = SPRITE + 'px "Apple Symbols", "Segoe UI Symbol", "Noto Sans Symbols 2", sans-serif';
+        x.textAlign = 'center';
+        x.textBaseline = 'middle';
+        x.shadowColor = col;
+        x.shadowBlur = 18;
+        x.fillStyle = col;
+        x.fillText(g, SPRITE, SPRITE);
+        sprites.push(s);
+      });
+    });
+
+    var W, H, list = [];
+    function make(anywhere) {
+      return {
+        img: sprites[(Math.random() * sprites.length) | 0],
+        x: Math.random() * W,
+        y: anywhere ? Math.random() * H : -40,
+        size: 16 + Math.random() * 22,
+        fall: 16 + Math.random() * 26,           // px per second
+        sway: 12 + Math.random() * 28,
+        phase: Math.random() * Math.PI * 2,
+        spin: 0.6 + Math.random() * 0.8,
+        alpha: 0.18 + Math.random() * 0.32
+      };
+    }
+    function size() {
+      var dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = innerWidth; H = innerHeight;
+      c.width = W * dpr; c.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var want = W < 700 ? 12 : 24;
+      while (list.length < want) list.push(make(true));
+      list.length = want;
+    }
+    size();
+    addEventListener('resize', size);
+
+    var last = performance.now();
+    function frame(now) {
+      var dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < list.length; i++) {
+        var n = list[i];
+        n.y += n.fall * dt;
+        n.phase += dt * n.spin;
+        if (n.y > H + 40) { list[i] = n = make(false); }
+        var x = n.x + Math.sin(n.phase) * n.sway;
+        // Fade in at the top and out near the bottom.
+        var edge = Math.min(1, (n.y + 40) / 120, (H + 40 - n.y) / 160);
+        ctx.globalAlpha = n.alpha * Math.max(0, edge);
+        ctx.save();
+        ctx.translate(x, n.y);
+        ctx.rotate(Math.sin(n.phase * 0.8) * 0.4);
+        var d = n.size * 2;
+        ctx.drawImage(n.img, -d / 2, -d / 2, d, d);
+        ctx.restore();
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Wrap each word of [data-split] so the headline can arrive word by word.
+  function splitWords() {
+    document.querySelectorAll('[data-split]').forEach(function (el) {
+      var words = el.textContent.trim().split(/\s+/);
+      el.textContent = '';
+      words.forEach(function (w, i) {
+        if (i) el.appendChild(document.createTextNode(' '));
+        var s = document.createElement('span');
+        s.className = 'w';
+        s.textContent = w;
+        el.appendChild(s);
+      });
+    });
+    // Delays run across the whole headline, not per span.
+    document.querySelectorAll('.hero h1 .w').forEach(function (w, i) {
+      w.style.setProperty('--d', i);
+    });
+  }
+
+  // Sections rise in once they scroll into view.
+  function reveal() {
+    var els = document.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  // The room code shuffles, then locks in letter by letter.
+  function roomCode() {
+    var el = document.querySelector('.code');
+    if (!el || reduced || !('IntersectionObserver' in window)) return;
+    var final = el.textContent.trim();
+    var POOL = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    el.textContent = '';
+    var chars = final.split('').map(function () {
+      var s = document.createElement('span');
+      s.className = 'ch';
+      s.textContent = POOL[(Math.random() * POOL.length) | 0];
+      el.appendChild(s);
+      return s;
+    });
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      var t0 = performance.now();
+      (function tick(now) {
+        var locked = 0;
+        chars.forEach(function (s, i) {
+          if (now - t0 > 500 + i * 160) {
+            if (!s.classList.contains('lock')) {
+              s.textContent = final[i];
+              s.classList.add('lock');
+            }
+            locked++;
+          } else {
+            s.textContent = POOL[(Math.random() * POOL.length) | 0];
+          }
+        });
+        if (locked < chars.length) setTimeout(function () { requestAnimationFrame(tick); }, 55);
+      })(t0);
+    }, { rootMargin: '0px 0px -15% 0px' });
+    io.observe(el);
+  }
+
   window.OneSound = {
     // The landing page: text comes from [dict][lang][key].
     page: function (dict) {
@@ -150,6 +304,7 @@
           var v = t[el.dataset.i18n];
           if (typeof v === 'string') el.textContent = v;
         });
+        splitWords();
         document.querySelectorAll('[data-i18n-label]').forEach(function (el) {
           var v = t[el.dataset.i18nLabel];
           if (typeof v === 'string') el.setAttribute('aria-label', v);
@@ -160,6 +315,9 @@
       apply(initialLang());
       topbar();
       turntable();
+      notes();
+      reveal();
+      roomCode();
     },
 
     // The legal pages: one <article data-lang> per language.
@@ -173,6 +331,7 @@
       wireButtons(function (lang) { apply(lang); remember(lang); });
       apply(initialLang());
       topbar();
+      notes();
     }
   };
 })();

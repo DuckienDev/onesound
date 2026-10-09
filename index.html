@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/posters/guess-1.webp">
 <link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
@@ -36,8 +37,16 @@
   <section class="hero">
     <div class="wrap">
       <div class="copy">
-        <h1><span data-i18n="h1a">Hear it.</span> <span data-i18n="h1b">Raise your hand.</span>
-          <span data-i18n="h1c">Name it.</span></h1>
+        <p class="soon">
+          <span class="spark" style="--x:-14px;--y:-6px;--t:0s" aria-hidden="true"></span>
+          <span class="spark" style="--x:calc(100% + 4px);--y:-10px;--t:.7s" aria-hidden="true"></span>
+          <span class="spark" style="--x:30%;--y:calc(100% - 2px);--t:1.3s;--s:.6" aria-hidden="true"></span>
+          <span class="spark" style="--x:80%;--y:-14px;--t:1.9s;--s:.5" aria-hidden="true"></span>
+          <span class="spark" style="--x:calc(100% + 10px);--y:70%;--t:2.4s;--s:.7" aria-hidden="true"></span>
+          <span class="label" data-i18n="badge">Coming soon</span>
+        </p>
+        <h1><span data-i18n="h1a" data-split>Hear it.</span> <span data-i18n="h1b" data-split>Raise your hand.</span>
+          <span class="hl" data-i18n="h1c" data-split>Name it.</span></h1>
         <p class="lead" data-i18n="lead">OneSound is a live music-guessing game. Everyone in the room hears the same clip at the same moment, and the first hand up gets to answer.</p>
         <div class="stores">
           <span class="store">
@@ -95,13 +104,13 @@
 
   <section class="round" id="play">
     <div class="wrap">
-      <h2 data-i18n="roundTitle">How a round plays</h2>
+      <h2 data-reveal data-i18n="roundTitle">How a round plays</h2>
       <ol class="steps">
-        <li><h3 data-i18n="s1t">Listen</h3>
+        <li data-reveal style="--d:1"><h3 data-i18n="s1t">Listen</h3>
           <p data-i18n="s1p">A 15-second clip starts on every phone in the room at the same moment.</p></li>
-        <li><h3 data-i18n="s2t">Raise your hand</h3>
+        <li data-reveal style="--d:2"><h3 data-i18n="s2t">Raise your hand</h3>
           <p data-i18n="s2p">Know it? Tap first to take the turn. Everyone else waits.</p></li>
-        <li><h3 data-i18n="s3t">Name it</h3>
+        <li data-reveal style="--d:3"><h3 data-i18n="s3t">Name it</h3>
           <p data-i18n="s3p">You get 10 seconds and 3 tries. Faster answers score more.</p></li>
       </ol>
     </div>
@@ -109,12 +118,12 @@
 
   <section class="more">
     <div class="wrap">
-      <div>
+      <div data-reveal>
         <h2 data-i18n="packsTitle">2,400+ songs in 17 packs</h2>
         <p data-i18n="packsLead">Official 30-second previews, from today's charts to the songs you grew up with.</p>
         <p class="packs" data-i18n="packs">K-Pop, V-Pop, US-UK Hits, 2000s, Throwback Ballads, Pop, Rock Legends, Hip Hop, R&amp;B, EDM Bangers, Indie, Anime, Movie Soundtracks, TikTok Viral, Chill, V-Pop Remix, V-Pop Lofi</p>
       </div>
-      <div>
+      <div data-reveal style="--d:1">
         <h2 data-i18n="friendsTitle">Better with friends</h2>
         <p data-i18n="friendsLead">Create a room, send the code, and talk over voice chat while you play. Up to 8 players per room.</p>
         <span class="code" aria-label="Example room code">B7N8QC</span>
@@ -124,8 +133,8 @@
 
   <section class="cta">
     <div class="wrap">
-      <h2 data-i18n="ctaTitle">Free to play. Coming soon.</h2>
-      <p data-i18n="ctaLead">On Android and iOS, in English, Vietnamese and Korean.</p>
+      <h2 data-reveal data-i18n="ctaTitle">Free to play. Coming soon.</h2>
+      <p data-reveal style="--d:1" data-i18n="ctaLead">On Android and iOS, in English, Vietnamese and Korean.</p>
     </div>
   </section>
 </main>
@@ -147,7 +156,7 @@ OneSound.page({
   en: {
     h1a: 'Hear it.', h1b: 'Raise your hand.', h1c: 'Name it.',
     lead: 'OneSound is a live music-guessing game. Everyone in the room hears the same clip at the same moment, and the first hand up gets to answer.',
-    soon: 'Coming soon to', hint: 'Drag to spin',
+    badge: 'Coming soon', soon: 'Coming soon to', hint: 'Drag to spin',
     deckLabel: 'OneSound posters. Use the arrow keys to turn.',
     roundTitle: 'How a round plays',
     s1t: 'Listen', s1p: 'A 15-second clip starts on every phone in the room at the same moment.',
@@ -165,7 +174,7 @@ OneSound.page({
   vi: {
     h1a: 'Nghe.', h1b: 'Giơ tay.', h1c: 'Gọi tên bài.',
     lead: 'OneSound là game đoán nhạc trực tiếp. Cả phòng nghe cùng một đoạn nhạc vào cùng một lúc, ai giơ tay trước thì được trả lời.',
-    soon: 'Sắp có trên', hint: 'Kéo để xoay',
+    badge: 'Sắp ra mắt', soon: 'Sắp có trên', hint: 'Kéo để xoay',
     deckLabel: 'Poster OneSound. Dùng phím mũi tên để xoay.',
     roundTitle: 'Một vòng chơi',
     s1t: 'Nghe', s1p: 'Một đoạn nhạc 15 giây phát trên mọi điện thoại trong phòng vào cùng một lúc.',
@@ -183,7 +192,7 @@ OneSound.page({
   ko: {
     h1a: '듣고,', h1b: '손 들고,', h1c: '맞혀요.',
     lead: 'OneSound는 실시간 음악 맞히기 게임이에요. 방 안의 모두가 같은 순간에 같은 곡을 듣고, 먼저 손을 든 사람이 답할 수 있어요.',
-    soon: '곧 출시', hint: '드래그해서 돌려 보세요',
+    badge: '곧 출시', soon: '곧 출시', hint: '드래그해서 돌려 보세요',
     deckLabel: 'OneSound 포스터. 방향키로 돌릴 수 있어요.',
     roundTitle: '한 라운드는 이렇게 진행돼요',
     s1t: '듣기', s1p: '15초 클립이 방 안 모든 휴대폰에서 동시에 재생돼요.',
