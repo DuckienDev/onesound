@@ -15,8 +15,8 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/screens/home.webp">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/posters/guess-1.webp">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -52,27 +52,39 @@
       </div>
 
       <div class="deck" id="deck" tabindex="0" role="group"
-           aria-label="App screens. Use the arrow keys to turn." data-i18n-label="deckLabel">
+           aria-label="OneSound posters. Use the arrow keys to turn." data-i18n-label="deckLabel">
         <div class="ring" id="ring">
           <div class="record" aria-hidden="true"></div>
           <div class="slot" style="--i:0">
-            <div class="face"><img src="assets/screens/home.webp" alt="Home: play now, solo, create or join a room, daily challenge and trending packs" width="540" height="1200"></div>
+            <div class="face"><img src="assets/posters/guess-1.webp" alt="Guess the song: listen to the music and test how well you know your favourite songs" width="540" height="960"></div>
             <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
           </div>
           <div class="slot" style="--i:1">
-            <div class="face"><img src="assets/screens/discover.webp" alt="Discover: music packs by region, era, genre and mood" width="540" height="1200" loading="lazy"></div>
+            <div class="face"><img src="assets/posters/friends-1.webp" alt="Play music with friends: challenge your friends and find out who knows music best" width="540" height="960" loading="lazy"></div>
             <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
           </div>
           <div class="slot" style="--i:2">
-            <div class="face"><img src="assets/screens/leaderboard.webp" alt="Leaderboard: this week's top players on the podium" width="540" height="1200" loading="lazy"></div>
+            <div class="face"><img src="assets/posters/know-1.webp" alt="How well do you know music? Recognise songs and prove you are a true fan" width="540" height="960" loading="lazy"></div>
             <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
           </div>
           <div class="slot" style="--i:3">
-            <div class="face"><img src="assets/screens/player.webp" alt="A player's profile with friends, followers, wins and win streak" width="540" height="1200" loading="lazy"></div>
+            <div class="face"><img src="assets/posters/chat-1.webp" alt="Play together, chat together: join a room, talk with friends and guess together" width="540" height="960" loading="lazy"></div>
             <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
           </div>
           <div class="slot" style="--i:4">
-            <div class="face"><img src="assets/screens/welcome.webp" alt="Sign in with Google or play as a guest" width="540" height="1200" loading="lazy"></div>
+            <div class="face"><img src="assets/posters/guess-2.webp" alt="Guess the song, on the home screen" width="540" height="960" loading="lazy"></div>
+            <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
+          </div>
+          <div class="slot" style="--i:5">
+            <div class="face"><img src="assets/posters/friends-2.webp" alt="Play with friends, from a private room code" width="540" height="960" loading="lazy"></div>
+            <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
+          </div>
+          <div class="slot" style="--i:6">
+            <div class="face"><img src="assets/posters/know-2.webp" alt="Climb the leaderboard and fill your profile" width="540" height="960" loading="lazy"></div>
+            <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
+          </div>
+          <div class="slot" style="--i:7">
+            <div class="face"><img src="assets/posters/chat-2.webp" alt="Voice chat and gifts in the game room" width="540" height="960" loading="lazy"></div>
             <div class="back" aria-hidden="true"><img src="assets/icon.png" alt=""></div>
           </div>
         </div>
@@ -136,7 +148,7 @@ OneSound.page({
     h1a: 'Hear it.', h1b: 'Raise your hand.', h1c: 'Name it.',
     lead: 'OneSound is a live music-guessing game. Everyone in the room hears the same clip at the same moment, and the first hand up gets to answer.',
     soon: 'Coming soon to', hint: 'Drag to spin',
-    deckLabel: 'App screens. Use the arrow keys to turn.',
+    deckLabel: 'OneSound posters. Use the arrow keys to turn.',
     roundTitle: 'How a round plays',
     s1t: 'Listen', s1p: 'A 15-second clip starts on every phone in the room at the same moment.',
     s2t: 'Raise your hand', s2p: 'Know it? Tap first to take the turn. Everyone else waits.',
@@ -154,7 +166,7 @@ OneSound.page({
     h1a: 'Nghe.', h1b: 'Giơ tay.', h1c: 'Gọi tên bài.',
     lead: 'OneSound là game đoán nhạc trực tiếp. Cả phòng nghe cùng một đoạn nhạc vào cùng một lúc, ai giơ tay trước thì được trả lời.',
     soon: 'Sắp có trên', hint: 'Kéo để xoay',
-    deckLabel: 'Màn hình app. Dùng phím mũi tên để xoay.',
+    deckLabel: 'Poster OneSound. Dùng phím mũi tên để xoay.',
     roundTitle: 'Một vòng chơi',
     s1t: 'Nghe', s1p: 'Một đoạn nhạc 15 giây phát trên mọi điện thoại trong phòng vào cùng một lúc.',
     s2t: 'Giơ tay', s2p: 'Biết bài? Bấm trước để giành lượt, những người khác phải chờ.',
@@ -172,7 +184,7 @@ OneSound.page({
     h1a: '듣고,', h1b: '손 들고,', h1c: '맞혀요.',
     lead: 'OneSound는 실시간 음악 맞히기 게임이에요. 방 안의 모두가 같은 순간에 같은 곡을 듣고, 먼저 손을 든 사람이 답할 수 있어요.',
     soon: '곧 출시', hint: '드래그해서 돌려 보세요',
-    deckLabel: '앱 화면. 방향키로 돌릴 수 있어요.',
+    deckLabel: 'OneSound 포스터. 방향키로 돌릴 수 있어요.',
     roundTitle: '한 라운드는 이렇게 진행돼요',
     s1t: '듣기', s1p: '15초 클립이 방 안 모든 휴대폰에서 동시에 재생돼요.',
     s2t: '손 들기', s2p: '아는 곡이면 먼저 눌러 차례를 가져가요. 다른 사람은 기다려요.',

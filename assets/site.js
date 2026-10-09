@@ -51,7 +51,7 @@
     update();
   }
 
-  // The ring of phones turns slowly like a record, can be dragged or turned
+  // The ring of posters turns slowly like a record, can be dragged or turned
   // with the arrow keys, and drifts to rest after a flick. On load it swings
   // in once; with reduced motion it only moves when asked to.
   function turntable() {
@@ -59,7 +59,7 @@
     var ring = document.getElementById('ring');
     if (!deck || !ring) return;
 
-    var STEP = 72;            // degrees between phones
+    var STEP = 45;            // degrees between posters
     var CRUISE = -6;          // degrees per second while idle
     var angle = reduced ? 0 : 150;
     var velocity = 0;         // degrees per second, from drags
