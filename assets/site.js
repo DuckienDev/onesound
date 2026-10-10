@@ -1,7 +1,7 @@
 /* OneSound site: language switching and the turntable of phones.
    No dependencies. Without JS the page is static and still complete. */
 (function () {
-  var LANGS = ['en', 'vi', 'ko'];
+  var LANGS = ['en', 'vi', 'ko', 'zh'];
   var reduced = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

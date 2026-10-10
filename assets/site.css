@@ -14,8 +14,8 @@
   --line: rgba(127, 212, 255, .14);
 
   /* Condensed and heavy like an arena banner, matching the posters. */
-  --display: "Big Shoulders Display", "Noto Sans KR", system-ui, sans-serif;
-  --body: "Plus Jakarta Sans", "Noto Sans KR", system-ui, sans-serif;
+  --display: "Big Shoulders Display", "Noto Sans KR", "Noto Sans SC", system-ui, sans-serif;
+  --body: "Plus Jakarta Sans", "Noto Sans KR", "Noto Sans SC", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -348,6 +348,18 @@ footer {
 footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; }
 footer nav { display: flex; flex-wrap: wrap; gap: 24px; }
 footer a:hover { color: var(--text); }
+
+/* ---------------------------------------------------------------- chinese */
+/* Big Shoulders has no CJK, and its condensed caps don't suit Hanzi: Chinese
+   pages set in Noto Sans SC, a little smaller and without the tight tracking. */
+:lang(zh) {
+  --display: "Noto Sans SC", system-ui, sans-serif;
+  --body: "Plus Jakarta Sans", "Noto Sans SC", system-ui, sans-serif;
+}
+:lang(zh) .hero h1 { font-weight: 900; font-size: clamp(44px, 7.4vw, 96px); line-height: 1.12; letter-spacing: .01em; word-spacing: -.3em; }
+:lang(zh) .round h2, :lang(zh) .more h2, :lang(zh) .cta h2, :lang(zh) .doc h1 { font-weight: 900; letter-spacing: .01em; }
+:lang(zh) .steps h3, :lang(zh) .doc h2 { font-weight: 700; }
+:lang(zh) .soon { letter-spacing: .3em; }
 
 /* ----------------------------------------------------------------- mobile */
 @media (max-width: 900px) {

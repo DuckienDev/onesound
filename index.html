@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Urbanist:wght@800&family=Noto+Sans+KR:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Urbanist:wght@800&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/posters/guess-1.webp">
 <link rel="stylesheet" href="assets/site.css">
 <script>document.documentElement.classList.add('js')</script>
@@ -43,6 +43,7 @@
       <button type="button" data-lang="en">EN</button>
       <button type="button" data-lang="vi">VI</button>
       <button type="button" data-lang="ko">한국어</button>
+      <button type="button" data-lang="zh">中文</button>
     </div>
   </div>
 </header>
@@ -156,7 +157,7 @@
   <section class="cta">
     <div class="wrap">
       <h2 data-reveal data-i18n="ctaTitle">Free to play. Coming soon.</h2>
-      <p data-reveal style="--d:1" data-i18n="ctaLead">On Android and iOS, in English, Vietnamese and Korean.</p>
+      <p data-reveal style="--d:1" data-i18n="ctaLead">On Android and iOS, in English, Vietnamese, Korean and Chinese.</p>
     </div>
   </section>
 </main>
@@ -193,7 +194,7 @@ OneSound.page({
     friendsTitle: 'Better with friends',
     friendsLead: 'Create a room, send the code, and talk over voice chat while you play. Up to 8 players per room.',
     ctaTitle: 'Free to play. Coming soon.',
-    ctaLead: 'On Android and iOS, in English, Vietnamese and Korean.',
+    ctaLead: 'On Android and iOS, in English, Vietnamese, Korean and Chinese.',
     privacy: 'Privacy Policy', terms: 'Terms of Use'
   },
   vi: {
@@ -214,7 +215,7 @@ OneSound.page({
     friendsTitle: 'Vui hơn khi có bạn bè',
     friendsLead: 'Tạo phòng, gửi mã cho bạn và trò chuyện bằng giọng nói trong lúc chơi. Mỗi phòng tối đa 8 người.',
     ctaTitle: 'Miễn phí. Sắp ra mắt.',
-    ctaLead: 'Trên Android và iOS, có tiếng Việt, tiếng Anh và tiếng Hàn.',
+    ctaLead: 'Trên Android và iOS, có tiếng Việt, tiếng Anh, tiếng Hàn và tiếng Trung.',
     privacy: 'Chính sách quyền riêng tư', terms: 'Điều khoản sử dụng'
   },
   ko: {
@@ -235,8 +236,29 @@ OneSound.page({
     friendsTitle: '친구와 함께하면 더 재밌어요',
     friendsLead: '방을 만들고 코드를 보내서, 플레이하는 동안 음성으로 대화해요. 한 방에 최대 8명까지 들어올 수 있어요.',
     ctaTitle: '무료로 즐겨요. 곧 출시돼요.',
-    ctaLead: 'Android와 iOS에서 한국어, 영어, 베트남어로 만나요.',
+    ctaLead: 'Android와 iOS에서 한국어, 영어, 베트남어, 중국어로 만나요.',
     privacy: '개인정보 처리방침', terms: '이용약관'
+  },
+  zh: {
+    betaSmall: '测试版', betaBig: '下载 Android 版',
+    betaMeta: 'APK · 82 MB · Android 7.0 及以上', betaOld: '旧款 32 位手机？',
+    betaHow: '在手机上打开文件，按提示允许安装来自此来源的应用。',
+    h1a: '听歌，', h1b: '举手，', h1c: '猜歌名。',
+    lead: 'OneSound 是一款实时猜歌游戏。房间里的每个人在同一时刻听到同一段音乐，最先举手的人获得作答机会。',
+    badge: '即将上线', soon: '即将登陆', hint: '拖动旋转',
+    deckLabel: 'OneSound 海报。使用方向键旋转。',
+    roundTitle: '一局怎么玩',
+    s1t: '听', s1p: '一段 15 秒的音乐同时在房间里每部手机上播放。',
+    s2t: '举手', s2p: '听出来了？抢先点一下拿到作答机会，其他人等待。',
+    s3t: '猜歌名', s3p: '你有 10 秒和 3 次机会。答得越快，得分越高。',
+    packsTitle: '17 个曲包，2,400+ 首歌',
+    packsLead: '官方 30 秒试听片段，从当下热榜到陪你长大的老歌。',
+    packs: 'K-Pop、V-Pop、欧美热歌、2000 年代、怀旧情歌、流行、摇滚传奇、嘻哈、R&B、EDM 燃曲、独立音乐、动漫、影视原声、TikTok 热歌、轻松、V-Pop Remix、V-Pop Lofi',
+    friendsTitle: '和朋友一起更好玩',
+    friendsLead: '创建房间，发送房间码，边玩边语音聊天。每个房间最多 8 人。',
+    ctaTitle: '免费畅玩，即将上线。',
+    ctaLead: '登陆 Android 和 iOS，支持中文、英语、越南语和韩语。',
+    privacy: '隐私政策', terms: '使用条款'
   }
 });
 </script>
