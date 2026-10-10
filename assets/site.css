@@ -172,6 +172,25 @@ a { color: inherit; text-decoration: none; }
 .beta-btn strong { display: block; font: 700 17px/1.25 var(--body); }
 .beta-meta { margin: 0; font-size: 13px; color: var(--mute); }
 .beta-meta a { color: var(--ice); text-decoration: underline; text-underline-offset: 2px; }
+.visits {
+  margin: 2px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--sub);
+}
+.visits strong { font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+.visits-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+}
 .beta-how { margin: 0; max-width: 30em; font-size: 12.5px; color: var(--mute); }
 
 /* The turntable: posters standing in a ring on a record. */

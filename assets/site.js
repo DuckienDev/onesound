@@ -295,7 +295,41 @@
     io.observe(el);
   }
 
+  // The visit counter: one hit per browser session, then the total counts
+  // up into place. Quietly stays hidden if the request fails.
+  function visits(cfg) {
+    var box = document.getElementById('visits');
+    var num = document.getElementById('visitsNum');
+    if (!box || !num || !window.fetch) return;
+    var seen = false;
+    try { seen = sessionStorage.getItem('onesound.visited') === '1'; } catch (e) {}
+    // A reload in the same session reads the total without adding to it.
+    fetch(seen ? cfg.url.replace('site_hit', 'site_total') : cfg.url, {
+      method: 'POST',
+      headers: {
+        apikey: cfg.key,
+        Authorization: 'Bearer ' + cfg.key,
+        'Content-Type': 'application/json'
+      },
+      body: '{}'
+    }).then(function (r) { return r.ok ? r.json() : null; }).then(function (total) {
+      if (typeof total !== 'number') return;
+      try { sessionStorage.setItem('onesound.visited', '1'); } catch (e) {}
+      var fmt = function (n) { return Math.round(n).toLocaleString('en-US'); };
+      box.hidden = false;
+      if (reduced) { num.textContent = fmt(total); return; }
+      var from = Math.max(0, total - 240), start = performance.now(), dur = 1400;
+      (function step(now) {
+        var t = Math.min(1, (now - start) / dur);
+        num.textContent = fmt(from + (total - from) * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) requestAnimationFrame(step);
+      })(start);
+    }).catch(function () {});
+  }
+
   window.OneSound = {
+    visits: visits,
+
     // The landing page: text comes from [dict][lang][key].
     page: function (dict) {
       function apply(lang) {

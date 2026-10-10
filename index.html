@@ -79,6 +79,7 @@
             <span><small data-i18n="betaSmall">Test build</small><strong data-i18n="betaBig">Download for Android</strong></span>
           </a>
           <p class="beta-meta"><span data-i18n="betaMeta">APK · 82 MB · Android 7.0 or newer</span> · <a href="https://github.com/DuckienDev/onesound/releases/latest/download/OneSound-android-armv7.apk" download data-i18n="betaOld">Older 32-bit phone?</a></p>
+          <p class="visits" id="visits" hidden><span class="visits-dot" aria-hidden="true"></span><strong id="visitsNum">38,888</strong> <span data-i18n="visits">visits</span></p>
           <p class="beta-how" data-i18n="betaHow">Open the file on your phone and allow installs from this source when asked.</p>
         </div>
       </div>
@@ -175,8 +176,16 @@
 
 <script src="assets/site.js"></script>
 <script>
+OneSound.visits({
+  url: 'https://ntrrjqgtnfajfdimwtgc.supabase.co/rest/v1/rpc/site_hit',
+  // The public anon key, the same one the app ships with.
+  key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im50cnJqcWd0bmZhamZkaW13dGdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0Mzg2NjMsImV4cCI6MjEwNzAxNDY2M30.gkUlXZti_we2pMiI9zPDuvJZN7xv5A0T5GkgMovaPxY'
+});
+</script>
+<script>
 OneSound.page({
   en: {
+    visits: 'visits',
     betaSmall: 'Test build', betaBig: 'Download for Android',
     betaMeta: 'APK · 82 MB · Android 7.0 or newer', betaOld: 'Older 32-bit phone?',
     betaHow: 'Open the file on your phone and allow installs from this source when asked.',
@@ -198,6 +207,7 @@ OneSound.page({
     privacy: 'Privacy Policy', terms: 'Terms of Use'
   },
   vi: {
+    visits: 'lượt truy cập',
     betaSmall: 'Bản thử nghiệm', betaBig: 'Tải cho Android',
     betaMeta: 'APK · 82 MB · Android 7.0 trở lên', betaOld: 'Máy cũ 32-bit?',
     betaHow: 'Mở file trên điện thoại và cho phép cài đặt từ nguồn này khi được hỏi.',
@@ -219,6 +229,7 @@ OneSound.page({
     privacy: 'Chính sách quyền riêng tư', terms: 'Điều khoản sử dụng'
   },
   ko: {
+    visits: '방문',
     betaSmall: '테스트 버전', betaBig: 'Android용 다운로드',
     betaMeta: 'APK · 82MB · Android 7.0 이상', betaOld: '오래된 32비트 폰인가요?',
     betaHow: '휴대폰에서 파일을 열고, 요청이 나오면 이 출처의 설치를 허용하세요.',
@@ -240,6 +251,7 @@ OneSound.page({
     privacy: '개인정보 처리방침', terms: '이용약관'
   },
   zh: {
+    visits: '次访问',
     betaSmall: '测试版', betaBig: '下载 Android 版',
     betaMeta: 'APK · 82 MB · Android 7.0 及以上', betaOld: '旧款 32 位手机？',
     betaHow: '在手机上打开文件，按提示允许安装来自此来源的应用。',
