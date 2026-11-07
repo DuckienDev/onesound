@@ -58,27 +58,27 @@
           <span class="spark" style="--x:30%;--y:calc(100% - 2px);--t:1.3s;--s:.6" aria-hidden="true"></span>
           <span class="spark" style="--x:80%;--y:-14px;--t:1.9s;--s:.5" aria-hidden="true"></span>
           <span class="spark" style="--x:calc(100% + 10px);--y:70%;--t:2.4s;--s:.7" aria-hidden="true"></span>
-          <span class="label" data-i18n="badge">Coming soon</span>
+          <span class="label" data-i18n="badge">Out now on Android</span>
         </p>
         <h1><span data-i18n="h1a" data-split>Hear it.</span> <span data-i18n="h1b" data-split>Raise your hand.</span>
           <span class="hl" data-i18n="h1c" data-split>Name it.</span></h1>
         <p class="lead" data-i18n="lead">OneSound is a live music-guessing game. Everyone in the room hears the same clip at the same moment, and the first hand up gets to answer.</p>
         <div class="stores">
-          <span class="store">
+          <a class="store" href="https://play.google.com/store/apps/details?id=com.onesound.dy" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 3.5v17l9-8.5-9-8.5Z" fill="#22d3ee"/><path d="m13 12 3-2.9L5.2 3l7.8 9Z" fill="#3ea6ff"/><path d="m13 12-7.8 9L16 14.9 13 12Z" fill="#8b5cf6"/><path d="m16 9.1 3.6 2a1 1 0 0 1 0 1.8l-3.6 2L13 12l3-2.9Z" fill="#ffc940"/></svg>
-            <span><small data-i18n="soon">Coming soon to</small><strong>Google Play</strong></span>
-          </span>
+            <span><small data-i18n="getOn">Get it on</small><strong>Google Play</strong></span>
+          </a>
           <span class="store alt">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.9C7 7.3 5.4 8.3 4.6 9.8c-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.4 3 2.4 1.2-.1 1.6-.8 3.1-.8s1.8.8 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.2-2.6 1.3-2.7-.1 0-2.6-1-2.8-4ZM14.1 5.7c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4Z"/></svg>
             <span><small data-i18n="soon">Coming soon to</small><strong>App Store</strong></span>
           </span>
         </div>
         <div class="beta">
-          <a class="beta-btn" href="https://github.com/DuckienDev/onesound/releases/latest/download/OneSound-android.apk" download>
+          <a class="beta-btn" href="https://play.google.com/store/apps/details?id=com.onesound.dy" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48 19.44 6.3a.6.6 0 0 0-1.04-.6l-1.87 3.23A11.5 11.5 0 0 0 12 8c-1.62 0-3.15.33-4.53.93L5.6 5.7a.6.6 0 1 0-1.04.6L6.4 9.48A10.9 10.9 0 0 0 1 18h22a10.9 10.9 0 0 0-5.4-8.52ZM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z"/></svg>
             <span><small data-i18n="betaSmall">Test build</small><strong data-i18n="betaBig">Download for Android</strong></span>
           </a>
-          <p class="beta-meta"><span data-i18n="betaMeta">APK · 90 MB · Android 7.0 or newer</span> · <a href="https://github.com/DuckienDev/onesound/releases/latest/download/OneSound-android-armv7.apk" download data-i18n="betaOld">Older 32-bit phone?</a></p>
+          <p class="beta-meta"><span data-i18n="betaMeta">Free · Android 7.0 or newer</span> · <a href="https://github.com/DuckienDev/onesound/releases/latest/download/OneSound-android.apk" download data-i18n="betaOld">Download the APK instead</a></p>
           <p class="visits" id="visits" hidden><span class="visits-dot" aria-hidden="true"></span><strong id="visitsNum">38,888</strong> <span data-i18n="visits">visits</span></p>
           <p class="beta-how" data-i18n="betaHow">Open the file on your phone and allow installs from this source when asked.</p>
         </div>
@@ -157,8 +157,8 @@
 
   <section class="cta">
     <div class="wrap">
-      <h2 data-reveal data-i18n="ctaTitle">Free to play. Coming soon.</h2>
-      <p data-reveal style="--d:1" data-i18n="ctaLead">On Android and iOS, in English, Vietnamese, Korean and Chinese.</p>
+      <h2 data-reveal data-i18n="ctaTitle">Free to play. Out now on Android.</h2>
+      <p data-reveal style="--d:1" data-i18n="ctaLead">iOS is coming soon. In English, Vietnamese, Korean and Chinese.</p>
     </div>
   </section>
 </main>
@@ -186,12 +186,12 @@ OneSound.visits({
 OneSound.page({
   en: {
     visits: 'visits',
-    betaSmall: 'Test build', betaBig: 'Download for Android',
-    betaMeta: 'APK · 90 MB · Android 7.0 or newer', betaOld: 'Older 32-bit phone?',
-    betaHow: 'Open the file on your phone and allow installs from this source when asked.',
+    betaSmall: 'Free on', betaBig: 'Google Play',
+    betaMeta: 'Free · Android 7.0 or newer', betaOld: 'Download the APK instead',
+    betaHow: 'Installs and updates through Google Play.',
     h1a: 'Hear it.', h1b: 'Raise your hand.', h1c: 'Name it.',
     lead: 'OneSound is a live music-guessing game. Everyone in the room hears the same clip at the same moment, and the first hand up gets to answer.',
-    badge: 'Coming soon', soon: 'Coming soon to', hint: 'Drag to spin',
+    badge: 'Out now on Android', getOn: 'Get it on', soon: 'Coming soon to', hint: 'Drag to spin',
     deckLabel: 'OneSound posters. Use the arrow keys to turn.',
     roundTitle: 'How a round plays',
     s1t: 'Listen', s1p: 'A 15-second clip starts on every phone in the room at the same moment.',
@@ -202,18 +202,18 @@ OneSound.page({
     packs: 'K-Pop, V-Pop, US-UK Hits, 2000s, Throwback Ballads, Pop, Rock Legends, Hip Hop, R&B, EDM Bangers, Indie, Anime, Movie Soundtracks, TikTok Viral, Chill, V-Pop Remix, V-Pop Lofi',
     friendsTitle: 'Better with friends',
     friendsLead: 'Create a room, send the code, and talk over voice chat while you play. Up to 8 players per room.',
-    ctaTitle: 'Free to play. Coming soon.',
-    ctaLead: 'On Android and iOS, in English, Vietnamese, Korean and Chinese.',
+    ctaTitle: 'Free to play. Out now on Android.',
+    ctaLead: 'iOS is coming soon. In English, Vietnamese, Korean and Chinese.',
     privacy: 'Privacy Policy', terms: 'Terms of Use'
   },
   vi: {
     visits: 'lượt truy cập',
-    betaSmall: 'Bản thử nghiệm', betaBig: 'Tải cho Android',
-    betaMeta: 'APK · 90 MB · Android 7.0 trở lên', betaOld: 'Máy cũ 32-bit?',
-    betaHow: 'Mở file trên điện thoại và cho phép cài đặt từ nguồn này khi được hỏi.',
+    betaSmall: 'Miễn phí trên', betaBig: 'Google Play',
+    betaMeta: 'Miễn phí · Android 7.0 trở lên', betaOld: 'Hoặc tải file APK',
+    betaHow: 'Cài và cập nhật tự động qua Google Play.',
     h1a: 'Nghe.', h1b: 'Giơ tay.', h1c: 'Gọi tên bài.',
     lead: 'OneSound là game đoán nhạc trực tiếp. Cả phòng nghe cùng một đoạn nhạc vào cùng một lúc, ai giơ tay trước thì được trả lời.',
-    badge: 'Sắp ra mắt', soon: 'Sắp có trên', hint: 'Kéo để xoay',
+    badge: 'Đã có trên Android', getOn: 'Tải trên', soon: 'Sắp có trên', hint: 'Kéo để xoay',
     deckLabel: 'Poster OneSound. Dùng phím mũi tên để xoay.',
     roundTitle: 'Một vòng chơi',
     s1t: 'Nghe', s1p: 'Một đoạn nhạc 15 giây phát trên mọi điện thoại trong phòng vào cùng một lúc.',
@@ -224,18 +224,18 @@ OneSound.page({
     packs: 'K-Pop, V-Pop, Hit Âu Mỹ, Thập niên 2000, Ballad hoài niệm, Pop, Huyền thoại Rock, Hip Hop, R&B, EDM bùng nổ, Indie, Anime, Nhạc phim, TikTok Viral, Chill, V-Pop Remix, V-Pop Lofi',
     friendsTitle: 'Vui hơn khi có bạn bè',
     friendsLead: 'Tạo phòng, gửi mã cho bạn và trò chuyện bằng giọng nói trong lúc chơi. Mỗi phòng tối đa 8 người.',
-    ctaTitle: 'Miễn phí. Sắp ra mắt.',
-    ctaLead: 'Trên Android và iOS, có tiếng Việt, tiếng Anh, tiếng Hàn và tiếng Trung.',
+    ctaTitle: 'Miễn phí. Đã có trên Android.',
+    ctaLead: 'iOS sắp ra mắt. Có tiếng Việt, tiếng Anh, tiếng Hàn và tiếng Trung.',
     privacy: 'Chính sách quyền riêng tư', terms: 'Điều khoản sử dụng'
   },
   ko: {
     visits: '방문',
-    betaSmall: '테스트 버전', betaBig: 'Android용 다운로드',
-    betaMeta: 'APK · 90MB · Android 7.0 이상', betaOld: '오래된 32비트 폰인가요?',
-    betaHow: '휴대폰에서 파일을 열고, 요청이 나오면 이 출처의 설치를 허용하세요.',
+    betaSmall: '무료 다운로드', betaBig: 'Google Play',
+    betaMeta: '무료 · Android 7.0 이상', betaOld: 'APK 파일로 받기',
+    betaHow: 'Google Play에서 설치하고 업데이트해요.',
     h1a: '듣고,', h1b: '손 들고,', h1c: '맞혀요.',
     lead: 'OneSound는 실시간 음악 맞히기 게임이에요. 방 안의 모두가 같은 순간에 같은 곡을 듣고, 먼저 손을 든 사람이 답할 수 있어요.',
-    badge: '곧 출시', soon: '곧 출시', hint: '드래그해서 돌려 보세요',
+    badge: 'Android 출시', getOn: '다운로드', soon: '곧 출시', hint: '드래그해서 돌려 보세요',
     deckLabel: 'OneSound 포스터. 방향키로 돌릴 수 있어요.',
     roundTitle: '한 라운드는 이렇게 진행돼요',
     s1t: '듣기', s1p: '15초 클립이 방 안 모든 휴대폰에서 동시에 재생돼요.',
@@ -246,18 +246,18 @@ OneSound.page({
     packs: 'K-Pop, V-Pop, 미국·영국 히트곡, 2000년대, 추억의 발라드, 팝, 록 레전드, 힙합, R&B, EDM 뱅어, 인디, 애니메이션, 영화 OST, 틱톡 바이럴, 칠, V-Pop 리믹스, V-Pop 로파이',
     friendsTitle: '친구와 함께하면 더 재밌어요',
     friendsLead: '방을 만들고 코드를 보내서, 플레이하는 동안 음성으로 대화해요. 한 방에 최대 8명까지 들어올 수 있어요.',
-    ctaTitle: '무료로 즐겨요. 곧 출시돼요.',
-    ctaLead: 'Android와 iOS에서 한국어, 영어, 베트남어, 중국어로 만나요.',
+    ctaTitle: '무료로 즐겨요. Android에서 만나요.',
+    ctaLead: 'iOS는 곧 출시돼요. 한국어, 영어, 베트남어, 중국어 지원.',
     privacy: '개인정보 처리방침', terms: '이용약관'
   },
   zh: {
     visits: '次访问',
-    betaSmall: '测试版', betaBig: '下载 Android 版',
-    betaMeta: 'APK · 90 MB · Android 7.0 及以上', betaOld: '旧款 32 位手机？',
-    betaHow: '在手机上打开文件，按提示允许安装来自此来源的应用。',
+    betaSmall: '免费下载', betaBig: 'Google Play',
+    betaMeta: '免费 · Android 7.0 及以上', betaOld: '或下载 APK 文件',
+    betaHow: '通过 Google Play 安装和更新。',
     h1a: '听歌，', h1b: '举手，', h1c: '猜歌名。',
     lead: 'OneSound 是一款实时猜歌游戏。房间里的每个人在同一时刻听到同一段音乐，最先举手的人获得作答机会。',
-    badge: '即将上线', soon: '即将登陆', hint: '拖动旋转',
+    badge: 'Android 版已上线', getOn: '立即下载', soon: '即将登陆', hint: '拖动旋转',
     deckLabel: 'OneSound 海报。使用方向键旋转。',
     roundTitle: '一局怎么玩',
     s1t: '听', s1p: '一段 15 秒的音乐同时在房间里每部手机上播放。',
@@ -268,8 +268,8 @@ OneSound.page({
     packs: 'K-Pop、V-Pop、欧美热歌、2000 年代、怀旧情歌、流行、摇滚传奇、嘻哈、R&B、EDM 燃曲、独立音乐、动漫、影视原声、TikTok 热歌、轻松、V-Pop Remix、V-Pop Lofi',
     friendsTitle: '和朋友一起更好玩',
     friendsLead: '创建房间，发送房间码，边玩边语音聊天。每个房间最多 8 人。',
-    ctaTitle: '免费畅玩，即将上线。',
-    ctaLead: '登陆 Android 和 iOS，支持中文、英语、越南语和韩语。',
+    ctaTitle: '免费畅玩，Android 版已上线。',
+    ctaLead: 'iOS 版即将推出。支持中文、英语、越南语和韩语。',
     privacy: '隐私政策', terms: '使用条款'
   }
 });
