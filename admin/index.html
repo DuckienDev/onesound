@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>OneSound Admin</title>
+<link rel="icon" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060b18;--surface:#0e1628;--raised:#15203a;--border:#22304f;
+  --title:#f2f6ff;--text:#c9d4ea;--muted:#7f8db0;
+  --accent:#3aa0ff;--accent2:#7b5cff;--ok:#2fd27a;--warn:#ffc94d;--bad:#ff5d6c;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.5 "Plus Jakarta Sans",system-ui,sans-serif}
+a{color:var(--accent)}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:5;background:rgba(6,11,24,.85);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+header .wrap{display:flex;align-items:center;gap:12px;height:60px}
+.logo{font:800 20px Urbanist,sans-serif;color:var(--title);letter-spacing:.2px}
+.logo span{color:var(--accent)}
+.pill{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+  padding:3px 8px;border-radius:999px;background:rgba(123,92,255,.18);color:#b9a8ff}
+.spacer{flex:1}
+.me{font-size:13px;color:var(--muted)}
+.btn{border:1px solid var(--border);background:var(--raised);color:var(--title);
+  padding:9px 14px;border-radius:999px;font-weight:600;font-size:13px;
+  display:inline-flex;align-items:center;gap:6px;transition:.15s}
+.btn:hover{border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.primary{background:linear-gradient(180deg,#45aaff,#1f7fe0);border-color:transparent;color:#fff}
+.btn.ok{background:rgba(47,210,122,.14);border-color:rgba(47,210,122,.5);color:var(--ok)}
+.btn.bad{background:rgba(255,93,108,.12);border-color:rgba(255,93,108,.5);color:var(--bad)}
+.btn.ghost{background:transparent}
+main{padding:22px 0 60px}
+.hero{border-radius:20px;padding:22px;margin-bottom:18px;
+  background:linear-gradient(120deg,#1f5bd6,#3aa0ff 55%,#7b5cff);color:#fff;
+  box-shadow:0 12px 30px rgba(58,160,255,.25)}
+.hero h1{margin:0 0 4px;font:800 26px Urbanist,sans-serif}
+.hero p{margin:0;opacity:.9}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.stat{background:rgba(255,255,255,.16);border-radius:12px;padding:8px 12px;min-width:90px}
+.stat b{display:block;font:800 22px Urbanist,sans-serif}
+.stat small{opacity:.85}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tab{border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  padding:8px 14px;border-radius:999px;font-weight:600;font-size:13px}
+.tab.on{color:#fff;background:var(--accent);border-color:var(--accent)}
+.tab .n{opacity:.8;margin-left:4px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:16px;margin-bottom:12px}
+.row{display:flex;gap:14px;align-items:flex-start}
+.cover{width:54px;height:54px;border-radius:12px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(135deg,#3aa0ff,#7b5cff);color:#fff;font-size:24px}
+.grow{flex:1;min-width:0}
+.title{color:var(--title);font-weight:700;font-size:17px;margin:0;word-break:break-word}
+.sub{color:var(--muted);font-size:13px;margin-top:2px}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;
+  padding:3px 8px;border-radius:999px;margin-right:6px}
+.tag.pending{background:rgba(255,201,77,.14);color:var(--warn)}
+.tag.approved{background:rgba(47,210,122,.14);color:var(--ok)}
+.tag.rejected{background:rgba(255,93,108,.14);color:var(--bad)}
+.tag.withdrawn,.tag.off{background:rgba(127,141,176,.16);color:var(--muted)}
+.tag.verified{background:rgba(58,160,255,.16);color:var(--accent)}
+.links a{font-size:13px;margin-right:10px}
+audio{width:100%;margin:12px 0 4px;height:38px}
+.clip{font-size:12px;color:var(--muted)}
+details{margin-top:10px}
+summary{cursor:pointer;color:var(--accent);font-size:13px;font-weight:600}
+pre{white-space:pre-wrap;background:var(--raised);border-radius:10px;padding:10px;
+  font:13px/1.5 "Plus Jakarta Sans",sans-serif;color:var(--text);max-height:260px;overflow:auto}
+.packs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px}
+.chip{border:1px solid var(--border);background:var(--raised);color:var(--text);
+  border-radius:999px;padding:5px 10px;font-size:12px}
+.chip.on{background:rgba(58,160,255,.18);border-color:var(--accent);color:#fff}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.note{font-size:13px;color:var(--text);background:var(--raised);border-radius:10px;padding:8px 10px;margin-top:8px}
+.empty{text-align:center;color:var(--muted);padding:50px 10px}
+.empty b{display:block;color:var(--title);font-size:18px;margin-bottom:4px}
+.login{max-width:420px;margin:60px auto;text-align:center}
+.login input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);
+  background:var(--surface);color:var(--title);font:inherit;margin:14px 0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  background:var(--raised);border:1px solid var(--border);color:var(--title);
+  padding:10px 16px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.4);
+  opacity:0;transition:.2s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.reason{font-size:13px;border-top:1px solid var(--border);padding-top:8px;margin-top:8px}
+.reason small{color:var(--muted)}
+.skel{height:120px;border-radius:16px;margin-bottom:12px;
+  background:linear-gradient(90deg,var(--surface),var(--raised),var(--surface));
+  background-size:200% 100%;animation:sh 1.2s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+@media (max-width:600px){.hero h1{font-size:22px}.me{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="logo">One<span>Sound</span></div>
+    <span class="pill">Admin</span>
+    <div class="spacer"></div>
+    <span class="me" id="me"></span>
+    <button class="btn ghost" id="logout" hidden>Đăng xuất</button>
+  </div>
+</header>
+<main class="wrap" id="app">
+  <div class="skel"></div><div class="skel"></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const SUPABASE_URL = 'https://ntrrjqgtnfajfdimwtgc.supabase.co';
+// The public anon key, the same one the app and the homepage ship with.
+// Admin rights are checked on the server (public.admins), not here.
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im50cnJqcWd0bmZhamZkaW13dGdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0Mzg2NjMsImV4cCI6MjEwNzAxNDY2M30.gkUlXZti_we2pMiI9zPDuvJZN7xv5A0T5GkgMovaPxY';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const app = document.getElementById('app');
+
+const STATUS = {
+  pending: 'Chờ duyệt', approved: 'Đã vào game',
+  rejected: 'Đã từ chối', withdrawn: 'Nghệ sĩ đã rút',
+};
+const REASONS = {
+  not_owner: 'Không phải chủ sở hữu', wrong_song: 'Sai bài',
+  offensive: 'Nội dung xấu', other: 'Khác',
+};
+let tab = 'pending';
+let packs = [];
+let counts = {};
+
+// Small DOM helper: el('div', {class:'x', onclick}, child, 'text', ...)
+function el(tag, attrs, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k.startsWith('on')) n.addEventListener(k.slice(2), v);
+    else if (k === 'class') n.className = v;
+    else n.setAttribute(k, v === true ? '' : v);
+  }
+  for (const k of kids.flat()) {
+    if (k == null || k === false) continue;
+    n.append(k instanceof Node ? k : document.createTextNode(String(k)));
+  }
+  return n;
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toast.t);
+  toast.t = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+async function rpc(name, params) {
+  const { data, error } = await sb.rpc(name, params);
+  if (error) {
+    const m = error.message === 'not_admin' ? 'Tài khoản này không có quyền admin.' : error.message;
+    toast('Lỗi: ' + m);
+    throw error;
+  }
+  return data;
+}
+
+function safeLink(url) {
+  try { const u = new URL(url); return /^https?:$/.test(u.protocol) ? u.href : null; }
+  catch { return null; }
+}
+
+function fmt(d) {
+  return d ? new Date(d).toLocaleString('vi-VN', { dateStyle: 'medium', timeStyle: 'short' }) : '';
+}
+
+// ---------------------------------------------------------------- sign-in
+function showLogin(message) {
+  document.getElementById('logout').hidden = true;
+  document.getElementById('me').textContent = '';
+  const input = el('input', { type: 'email', placeholder: 'Email admin', autocomplete: 'email' });
+  const send = el('button', { class: 'btn primary', onclick: async () => {
+    const email = input.value.trim();
+    if (!email) return;
+    send.disabled = true;
+    const { error } = await sb.auth.signInWithOtp({
+      email,
+      options: { shouldCreateUser: false, emailRedirectTo: location.href.split('#')[0] },
+    });
+    send.disabled = false;
+    if (error) return toast('Không gửi được: ' + error.message);
+    app.replaceChildren(el('div', { class: 'login' },
+      el('h2', {}, 'Kiểm tra email 📬'),
+      el('p', { class: 'sub' }, 'Đã gửi link đăng nhập tới ' + email + '. Mở link trên máy này.')));
+  } }, 'Gửi link đăng nhập');
+  app.replaceChildren(el('div', { class: 'login' },
+    el('div', { class: 'cover', style: 'margin:0 auto 14px;width:64px;height:64px' }, '🎛️'),
+    el('h2', { style: 'color:var(--title);margin:0' }, 'OneSound Admin'),
+    el('p', { class: 'sub' }, message || 'Duyệt bài nghệ sĩ và xử lý báo cáo. Chỉ tài khoản admin vào được.'),
+    input, send));
+}
+
+// ---------------------------------------------------------------- views
+async function refreshCounts() {
+  const all = await Promise.all(Object.keys(STATUS).map(s => rpc('admin_submissions', { p_status: s })));
+  Object.keys(STATUS).forEach((s, i) => counts[s] = all[i].length);
+  const reports = await rpc('admin_reports');
+  counts.reports = reports.filter(r => r.open > 0).length;
+  return { lists: Object.fromEntries(Object.keys(STATUS).map((s, i) => [s, all[i]])), reports };
+}
+
+async function render() {
+  app.replaceChildren(el('div', { class: 'skel' }), el('div', { class: 'skel' }));
+  let data;
+  try { data = await refreshCounts(); } catch { return; }
+  const hero = el('div', { class: 'hero' },
+    el('h1', {}, 'Duyệt nhạc nghệ sĩ'),
+    el('p', {}, 'Nghe thử, kiểm tra bản quyền rồi duyệt vào game hoặc từ chối.'),
+    el('div', { class: 'stats' },
+      stat(counts.pending, 'chờ duyệt'), stat(counts.approved, 'đã vào game'),
+      stat(counts.reports, 'báo cáo mở')));
+  const tabs = el('div', { class: 'tabs' },
+    ...Object.entries(STATUS).map(([k, v]) => tabBtn(k, v, counts[k])),
+    tabBtn('reports', 'Báo cáo vi phạm', counts.reports));
+  const body = el('div');
+  if (tab === 'reports') renderReports(body, data.reports);
+  else renderSubmissions(body, data.lists[tab]);
+  app.replaceChildren(hero, tabs, body);
+}
+
+function stat(n, label) {
+  return el('div', { class: 'stat' }, el('b', {}, n ?? 0), el('small', {}, label));
+}
+
+function tabBtn(key, label, n) {
+  return el('button', { class: 'tab' + (tab === key ? ' on' : ''),
+    onclick: () => { tab = key; render(); } }, label, el('span', { class: 'n' }, n ?? 0));
+}
+
+function renderSubmissions(box, list) {
+  if (!list.length) {
+    box.append(el('div', { class: 'empty' }, el('b', {}, 'Không có bài nào'),
+      tab === 'pending' ? 'Bài nghệ sĩ gửi lên sẽ hiện ở đây.' : ''));
+    return;
+  }
+  for (const s of list) box.append(submissionCard(s));
+}
+
+function submissionCard(s) {
+  const a = s.artist || {};
+  const links = Object.entries(a.links || {})
+    .map(([k, v]) => [k, safeLink(v)]).filter(([, v]) => v);
+  const audio = el('audio', { controls: true, preload: 'none' });
+  const card = el('div', { class: 'card' },
+    el('div', { class: 'row' },
+      el('div', { class: 'cover' }, '♪'),
+      el('div', { class: 'grow' },
+        el('p', { class: 'title' }, s.title),
+        el('div', { class: 'sub' }, a.name, a.email ? ' · ' + a.email : '',
+          ' · ', a.songs, ' bài · gửi ', fmt(s.created_at)),
+        el('div', { style: 'margin-top:6px' },
+          el('span', { class: 'tag ' + s.status }, STATUS[s.status]),
+          s.status === 'approved' && s.song_active === false ? el('span', { class: 'tag off' }, 'Đang tắt trong game') : null,
+          a.verified ? el('span', { class: 'tag verified' }, '✓ Đã xác minh') : null,
+          el('span', { class: 'tag off' }, 'Điều khoản ' + s.terms_version)),
+        links.length ? el('div', { class: 'links', style: 'margin-top:6px' },
+          ...links.map(([k, v]) => el('a', { href: v, target: '_blank', rel: 'noopener noreferrer' }, k + ' ↗'))) : null,
+        a.bio ? el('div', { class: 'sub', style: 'margin-top:6px' }, a.bio) : null)),
+    audio,
+    el('div', { class: 'clip' }, 'Đoạn trong game bắt đầu ở giây ', s.clip_start,
+      ' · bấm ▶ là phát từ đoạn đó'),
+    s.lyrics ? el('details', {}, el('summary', {}, 'Xem lời bài hát'), el('pre', {}, s.lyrics)) : null,
+    s.review_note ? el('div', { class: 'note' }, 'Lý do: ', s.review_note) : null);
+
+  // Signed URL only when needed: the bucket is private.
+  let loaded = false;
+  audio.addEventListener('play', async () => {
+    if (loaded) return;
+    audio.pause();
+    const { data, error } = await sb.storage.from('songs').createSignedUrl(s.audio_path, 600);
+    if (error) return toast('Không mở được file: ' + error.message);
+    loaded = true;
+    audio.src = data.signedUrl;
+    audio.addEventListener('loadedmetadata', () => { audio.currentTime = s.clip_start; }, { once: true });
+    audio.play();
+  });
+
+  const actions = el('div', { class: 'actions' });
+  if (s.status === 'pending') {
+    const chosen = new Set();
+    const chips = el('div', { class: 'packs' },
+      el('span', { class: 'sub', style: 'width:100%' }, 'Thêm vào gói (để trộn với nhạc khác):'),
+      ...packs.map(p => {
+        const c = el('button', { class: 'chip', onclick: () => {
+          chosen.has(p.id) ? chosen.delete(p.id) : chosen.add(p.id);
+          c.classList.toggle('on');
+        } }, p.title);
+        return c;
+      }));
+    card.append(chips);
+    actions.append(
+      el('button', { class: 'btn ok', onclick: async e => {
+        e.target.disabled = true;
+        try { await rpc('admin_approve', { p_id: s.id, p_packs: [...chosen] }); toast('Đã duyệt: ' + s.title); render(); }
+        catch { e.target.disabled = false; }
+      } }, '✓ Duyệt vào game'),
+      el('button', { class: 'btn bad', onclick: async () => {
+        const note = prompt('Lý do từ chối (nghệ sĩ sẽ thấy):', 'Chưa xác minh được bài là của bạn.');
+        if (note == null) return;
+        await rpc('admin_reject', { p_id: s.id, p_note: note });
+        toast('Đã từ chối'); render();
+      } }, '✕ Từ chối'));
+  }
+  if (s.status === 'approved') {
+    const on = s.song_active !== false;
+    actions.append(el('button', { class: 'btn', onclick: async () => {
+      await rpc('admin_set_song_active', { p_id: s.id, p_active: !on });
+      toast(on ? 'Đã tắt bài trong game' : 'Đã bật lại bài'); render();
+    } }, on ? '⏸ Tắt trong game' : '▶ Bật lại trong game'));
+  }
+  actions.append(
+    el('button', { class: 'btn', onclick: async () => {
+      await rpc('admin_set_artist_verified', { p_artist_id: a.id, p_verified: !a.verified });
+      toast(a.verified ? 'Đã bỏ xác minh' : 'Đã xác minh nghệ sĩ'); render();
+    } }, a.verified ? 'Bỏ xác minh nghệ sĩ' : '✓ Xác minh nghệ sĩ'),
+    el('button', { class: 'btn bad', onclick: async () => {
+      if (!confirm('Xoá hẳn bài "' + s.title + '"? File nhạc cũng bị xoá, không khôi phục được.')) return;
+      const path = await rpc('admin_delete_submission', { p_id: s.id });
+      const { error } = await sb.storage.from('songs').remove([path]);
+      toast(error ? 'Đã xoá bài, nhưng chưa xoá được file: ' + error.message : 'Đã xoá bài và file');
+      render();
+    } }, '🗑 Xoá hẳn'));
+  card.append(actions);
+  return card;
+}
+
+function renderReports(box, list) {
+  if (!list.length) {
+    box.append(el('div', { class: 'empty' }, el('b', {}, 'Chưa có báo cáo nào'),
+      'Người chơi báo vi phạm sau khi lộ đáp án sẽ hiện ở đây.'));
+    return;
+  }
+  for (const r of list) {
+    box.append(el('div', { class: 'card' },
+      el('div', { class: 'row' },
+        el('div', { class: 'cover', style: 'background:linear-gradient(135deg,#ff5d6c,#ff9f43)' }, '⚑'),
+        el('div', { class: 'grow' },
+          el('p', { class: 'title' }, r.title),
+          el('div', { class: 'sub' }, r.artist, ' · nguồn: ', r.source, ' · ', r.license_kind),
+          el('div', { style: 'margin-top:6px' },
+            el('span', { class: 'tag ' + (r.open ? 'pending' : 'off') }, r.open + ' báo cáo mở / ' + r.total),
+            el('span', { class: 'tag ' + (r.active ? 'approved' : 'off') }, r.active ? 'Đang trong game' : 'Đang tắt')))),
+      ...r.reasons.slice(0, 5).map(x => el('div', { class: 'reason' },
+        el('b', {}, REASONS[x.reason] || x.reason), ' · ', el('small', {}, fmt(x.at), ' · ', x.status),
+        x.details ? el('div', {}, x.details) : null)),
+      r.open ? el('div', { class: 'actions' },
+        el('button', { class: 'btn bad', onclick: async () => {
+          await rpc('admin_resolve_reports', { p_song_id: r.song_id, p_uphold: true });
+          toast('Đã gỡ bài khỏi game'); render();
+        } }, 'Gỡ bài khỏi game'),
+        el('button', { class: 'btn', onclick: async () => {
+          await rpc('admin_resolve_reports', { p_song_id: r.song_id, p_uphold: false });
+          toast('Đã bỏ qua báo cáo, bài vẫn trong game'); render();
+        } }, 'Bỏ qua báo cáo')) : null));
+  }
+}
+
+// ---------------------------------------------------------------- start
+async function start() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return showLogin();
+  let me;
+  try { me = await rpc('admin_whoami'); } catch { return showLogin('Phiên đăng nhập lỗi, hãy đăng nhập lại.'); }
+  document.getElementById('me').textContent = me.email || '';
+  document.getElementById('logout').hidden = false;
+  if (!me.admin) {
+    await sb.auth.signOut();
+    return showLogin('Tài khoản ' + (me.email || '') + ' không có quyền admin.');
+  }
+  packs = await rpc('admin_packs');
+  render();
+}
+
+document.getElementById('logout').addEventListener('click', async () => {
+  await sb.auth.signOut();
+  showLogin();
+});
+sb.auth.onAuthStateChange((event) => { if (event === 'SIGNED_IN') start(); });
+start();
+</script>
+</body>
+</html>
